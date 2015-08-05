@@ -433,8 +433,20 @@
 
             //      }
 
+            //function GetParameterValues(param) {
+            //    var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+            //    for (var i = 0; i < url.length; i++) {
+            //        var urlparam = url[i].split('=');
+            //        if (urlparam[0] == param) {
+            //            return urlparam[1];
+            //        }
+            //    }
+            //}
+
+            //$.mobile.activePage[0].baseURI;
+
             function GetParameterValues(param) {
-                var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                var url = $.mobile.activePage[0].baseURI.slice($.mobile.activePage[0].baseURI.indexOf('?') + 1).split('&');
                 for (var i = 0; i < url.length; i++) {
                     var urlparam = url[i].split('=');
                     if (urlparam[0] == param) {
@@ -450,7 +462,7 @@
 
                 if (!sbId)
                 {
-                    alert("url not formed correctly.")
+                    alert("url not formed correctly." + sbId)
                 }
                                               
                 $.ajax({
