@@ -443,8 +443,6 @@
             //    }
             //}
 
-            //$.mobile.activePage[0].baseURI;
-
             function GetParameterValues(param) {
                 var url = $(this).data('url').slice($(this).data('url').indexOf('?') + 1).split('&');
                 for (var i = 0; i < url.length; i++) {
@@ -459,13 +457,15 @@
                 var viewModel = null;
 
 
-                
+                alert(window.location.href);
+
+              
 
                 function handleOpenURL(url) {
-                    alert(ur);
+                    setTimeout(function () {
+                        alert("received url: " + url);
+                    }, 0);
                 }
-
-                
 
 
 
