@@ -446,7 +446,7 @@
             //$.mobile.activePage[0].baseURI;
 
             function GetParameterValues(param) {
-                var url = $.mobile.activePage[0].baseURI.slice($.mobile.activePage[0].baseURI.indexOf('?') + 1).split('&');
+                var url = $(this).data('url').slice($(this).data('url').indexOf('?') + 1).split('&');
                 for (var i = 0; i < url.length; i++) {
                     var urlparam = url[i].split('=');
                     if (urlparam[0] == param) {
