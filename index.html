@@ -405,13 +405,13 @@
 
     <script type="text/javascript">
 
-        var currentUrl = ""
-        function handleOpenURL(url) {
-            setTimeout(function () {
-                alert("received url: " + url);
+        //var currentUrl = ""
+        //function handleOpenURL(url) {
+        //    setTimeout(function () {
+        //        alert("received url: " + url);
                 
-            }, 0);
-        }
+        //    }, 0);
+        //}
 
 
         var opts = {
@@ -441,16 +441,6 @@
 
             //      }
 
-            //function GetParameterValues(param) {
-            //    var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-            //    for (var i = 0; i < url.length; i++) {
-            //        var urlparam = url[i].split('=');
-            //        if (urlparam[0] == param) {
-            //            return urlparam[1];
-            //        }
-            //    }
-            //}
-
             function GetParameterValues(param) {
                 var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
                 for (var i = 0; i < url.length; i++) {
@@ -461,13 +451,11 @@
                 }
             }
 
-           
-
             try {
                 var viewModel = null;
 
 
-                //alert(window.location.href);
+                alert(location.hash);
 
               
 
