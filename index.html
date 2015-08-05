@@ -405,6 +405,14 @@
 
     <script type="text/javascript">
 
+        var currentUrl = ""
+        function handleOpenURL(url) {
+            setTimeout(function () {
+                alert("received url: " + url);
+                
+            }, 0);
+        }
+
 
         var opts = {
             lines: 17,
@@ -444,7 +452,7 @@
             //}
 
             function GetParameterValues(param) {
-                var url = $(this).data('url').slice($(this).data('url').indexOf('?') + 1).split('&');
+                var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
                 for (var i = 0; i < url.length; i++) {
                     var urlparam = url[i].split('=');
                     if (urlparam[0] == param) {
@@ -452,6 +460,8 @@
                     }
                 }
             }
+
+           
 
             try {
                 var viewModel = null;
@@ -461,16 +471,13 @@
 
               
 
-                function handleOpenURL(url) {
-                    setTimeout(function () {
-                        alert("received url: " + url);
-                    }, 0);
-                }
+               
+
+                //sprintboards://index.html?sbid=1191
 
 
-
-                //var sbId = GetParameterValues('sbid');
-                var sbId = 1191;
+                var sbId = GetParameterValues('sbid');
+                //var sbId = 1191;
 
                 if (!sbId)
                 {
