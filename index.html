@@ -30,7 +30,20 @@
     <link rel="apple-touch-icon" href="http://sprintboards.com/img/apple-touch-icon.png">
     <link rel="image_src" href="http://sprintboards.com/img/apple-touch-icon.png">
 
+    <script type="text/javascript">
 
+        var currentUrl = "";
+        function handleOpenURL(url) {
+            setTimeout(function () {
+                alert("received url: " + url);
+                currentUrl = url;
+            }, 0);
+            currentUrl = url;
+        }
+
+        alert(currentUrl);
+
+    </script>
 
 </head>
 
@@ -442,14 +455,7 @@
                 }
             }
 
-            var currentUrl = "";
-            function handleOpenURL(url) {
-                setTimeout(function () {
-                    alert("received url: " + url);
-                    currentUrl = url;
-                }, 0);
-                currentUrl = url;
-            }
+            
             
                     
             try {
@@ -463,7 +469,7 @@
                     alert("url not formed correctly." + sbId);
                 }
 
-                alert(currentUrl);
+                //alert(currentUrl);
                                               
                 $.ajax({
                     url: "http://dev.sprintboards.com/share/getsharedsprintboard/" + sbId,
