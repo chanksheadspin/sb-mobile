@@ -453,24 +453,15 @@
                 }
             }
 
-            //function handleOpenURL(url) {
-            //    setTimeout(function () {
-            //        alert("received url: " + url);
-            //        currentUrl = url;
-            //    }, 0);
-            //    currentUrl = url;
-            //}
-
-
-
-function OpenUrl(url) {
+            function handleOpenURL(url) {
                 setTimeout(function () {
                     alert("received url: " + url);
                     currentUrl = url;
                 }, 0);
                 currentUrl = url;
             }
-
+            
+                    
             try {
                 var viewModel = null;
 
@@ -482,7 +473,7 @@ function OpenUrl(url) {
                     alert("url not formed correctly." + sbId);
                 }
 
-                
+                alert(currentUrl);
                                               
                 $.ajax({
                     url: "http://dev.sprintboards.com/share/getsharedsprintboard/" + sbId,
