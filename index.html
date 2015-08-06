@@ -6,6 +6,24 @@
  <!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
+    <script type="text/javascript">
+
+    var currentUrl = "";
+
+    function handleOpenURL(url) {
+        //setTimeout(function () {
+        //    alert("received url: " + url);
+        //    currentUrl = url;
+        //}, 0);
+        currentUrl = url;
+    }
+
+    alert("here1" + currentUrl);
+
+    </script>
+
+
+
     <meta charset="utf-8" />
     <title>Sprintboards</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
@@ -30,20 +48,7 @@
     <link rel="apple-touch-icon" href="http://sprintboards.com/img/apple-touch-icon.png">
     <link rel="image_src" href="http://sprintboards.com/img/apple-touch-icon.png">
 
-    <script type="text/javascript">
-
-        var currentUrl = "";
-        function handleOpenURL(url) {
-            setTimeout(function () {
-                alert("received url: " + url);
-                currentUrl = url;
-            }, 0);
-            currentUrl = url;
-        }
-
-        alert(currentUrl);
-
-    </script>
+    
 
 </head>
 
