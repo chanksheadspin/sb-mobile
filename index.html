@@ -405,8 +405,16 @@
 
     <script type="text/javascript">
 
-       
+        var currentUrl = "";
+        function handleOpenURL(url) {
+            //setTimeout(function () {
+            //  alert("received url: " + url);
+            //  currentUrl = url;
+            //}, 0);
+            currentUrl = url;
+        }
 
+        alert(currentUrl);
 
         var opts = {
             lines: 17,
@@ -445,14 +453,7 @@
                 }
             }
 
-            var currentUrl = "";
-            function handleOpenURL(url) {
-                setTimeout(function () {
-                    alert("received url: " + url);
-                    currentUrl = url;
-                }, 0);
-                currentUrl = url;
-            }
+           
 
             try {
                 var viewModel = null;
@@ -465,7 +466,7 @@
                     alert("url not formed correctly." + sbId);
                 }
 
-                alert(currentUrl);
+                
                                               
                 $.ajax({
                     url: "http://dev.sprintboards.com/share/getsharedsprintboard/" + sbId,
