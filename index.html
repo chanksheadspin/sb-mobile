@@ -433,21 +433,22 @@
                 ko.applyBindings(myModel);
 
                 //$('#welcome-modal').modal('show');
+                                               
+                var preBoards = [];
+                preBoards[0] = 1191;
+                localStorage["boards"] = JSON.stringify(preBoards);
+
+                //...
+                var boards = JSON.parse(localStorage["boards"]);
 
 
-                var boards = [];
-
-                window.localStorage.setItem("boarid", "1191");
-                var value = window.localStorage.getItem("boardid");
-
-                boards[0] = value;
+                //boards[0] = value;
                 //boards[1] = 1192;
 
                 for (i = 0; i < boards.length; i++)
                 {
                     var url = "http://dev.sprintboards.com/share/getsharedsprintboard/" + boards[i];
-
-
+                    
                     //try {
                     $.get(url, function (d) {
 
