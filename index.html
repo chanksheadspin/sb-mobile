@@ -437,8 +437,11 @@
 
                 var boards = [];
 
-                boards[0] = 1191;
-                boards[1] = 1192;
+                window.localStorage.setItem("boarid", "1191");
+                var value = window.localStorage.getItem("boardid");
+
+                boards[0] = value;
+                //boards[1] = 1192;
 
                 for (i = 0; i < boards.length; i++)
                 {
