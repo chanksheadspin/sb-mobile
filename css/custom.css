@@ -1537,3 +1537,19 @@ Page sidebar
     height: 30px;
     background-color: #fff;
 }
+
+.displayinline {
+    display: inline-block;
+}
+
+.mr30 {
+    margin-right: 30px;
+}
+
+.pt30 {
+    padding-top: 30px;
+}
+
+.portfolio-block {
+    background-color: #F7F7F7;
+}

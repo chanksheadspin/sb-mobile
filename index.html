@@ -3,25 +3,9 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
 <html lang="en">
- <!--<![endif]-->
+<!--<![endif]-->
 <!-- BEGIN HEAD -->
 <head>
-    <script type="text/javascript">
-
-    var currentUrl = "";
-
-    function handleOpenURL(url) {
-        //setTimeout(function () {
-        //    alert("received url: " + url);
-        //    currentUrl = url;
-        //}, 0);
-        currentUrl = url;
-    }
-
-    alert(currentUrl);
-
-    </script>
-
 
 
     <meta charset="utf-8" />
@@ -48,34 +32,90 @@
     <link rel="apple-touch-icon" href="http://sprintboards.com/img/apple-touch-icon.png">
     <link rel="image_src" href="http://sprintboards.com/img/apple-touch-icon.png">
 
-    
+
 
 </head>
 
 <body class="page-header-fixed page-full-width" id="sbmobilebody">
 
     <div class="header navbar navbar-inverse navbar-fixed-top">
-                        
+
         <div class="navbar-inner">
             <div class="container-fluid">
-               
+
                 <a class="brand" href="/">
                     <img src="img/sblogosm.png" alt="Sprintboards logo" />
                 </a>
-               
+
                 <a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
                     <img src="img/menu-toggler.png" alt="" />
                 </a>
-               
+
             </div>
         </div>
-      
+
     </div>
 
     <div class="page-container">
 
 
-        <div class="page-content" id="page-shell">
+        <div class="page-content pt30" id="page-shell">
+
+            <div class="row-fluid">
+                <div class="span4 responsive" data-tablet="span4" data-desktop="span4">
+
+
+                    <div class="dashboard-stat blue">
+                        <div class="visual">
+                            <i class="icon-medkit"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">
+                                <span data-bind="text: ProjectsOnTrack">0</span> of <span data-bind="text: ProjectsTotal">0</span>
+                            </div>
+                            <div class="desc">
+                                Projects On Track
+                            </div>
+                        </div>
+                        <span class="more">The health of your Sprintboards projects</span>
+                    </div>
+                </div>
+                <div class="span4 responsive" data-tablet="span4" data-desktop="span4">
+                    <div class="dashboard-stat yellow">
+                        <div class="visual">
+                            <i class="icon-flag"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number" data-bind="text: MilestonesTodo">
+                                0
+                            </div>
+                            <div class="desc">
+                                Milestones To Do
+                            </div>
+                        </div>
+                        <span class="more">How many milestones are there to complete</span>
+                    </div>
+                </div>
+                <div class="span4 responsive" data-tablet="span4" data-desktop="span4">
+                    <div class="dashboard-stat green">
+                        <div class="visual">
+                            <i class="icon-comments"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number" data-bind="text: DiscussionsTodo">
+                                0
+                            </div>
+                            <div class="desc">
+                                Discussion Items
+                            </div>
+                        </div>
+                        <span class="more">Issues, Risks, Next Steps, Questions, Etc</span>
+                    </div>
+                </div>
+
+
+            </div>
+            
 
 
 
@@ -113,255 +153,97 @@
 
 
             <!-- BEGIN PAGE CONTAINER-->
-            <div class="container-fluid" id="page-itself" style="display:none;">
-
-                <!-- BEGIN PAGE TITLE-->
-                <!--@{
-                if (Model.HasLogo)
-                {-->
-                <!--if logo show this-->
-                <!--<div class="row-fluid">
-                    <div class="span4">
-                        <h3 class="page-title">
-                            <img data-bind="attr: { src: LogoLoc() + '/getLogo/' + RefNo() }" alt=" logo" />
-                        </h3>
-                    </div>
-                    <div class="span8">
-                        <h3 class="page-title dlogo-title">
-                            <span class="pull-right"><span data-bind="text: Name"></span><p><small class="pull-right dlogo-small">Today</small></p></span>
-
-                        </h3>
-                    </div>
-                </div>-->
-                <!--end if logo-->
-                <!--}
-                else
-                {-->
+            <div class="container-fluid" id="page-itself" style="">
 
                 <div class="row-fluid">
-                    <div class="span12">
-                        <h3 class="page-title">
-                            <span data-bind="text: Name"></span>
 
-                            <span class="pull-right" style="font-size:22px">Today</span>
-                        </h3>
-                    </div>
-                </div>
+                    <!-- END DASHBOARD STATS -->
+                    <div class="clearfix"></div>
 
-                <!--}
-                }-->
-                <!-- END PAGE TITLE-->
-                <!-- BEGIN PROJECT OVERVIEW & STATUS UPDATE-->
-                <div class="row-fluid">
-
-
-                    <div data-desktop="span6" data-tablet="span6" class="responsive span6">
-                        <div class="dashboard-stat blue" style="">
-                            <div class="details" style="float:left; margin-left:20px">
-                                <div class="number" style="text-align:left;margin-bottom:20px">Project Overview</div>
-
-                                <span class="hidden-phone"><div class="scroller desc" data-height="150px" style="text-align:left;margin-bottom:20px" data-bind="html: Notes"></div></span>
-                                <span class="visible-phone"><div class="desc" style="text-align:left;margin-bottom:20px" data-bind="html: Notes"></div></span>
-
-
-                            </div>
-                            <span class="more">&nbsp;</span>
+                    <!-- Start Add Project Row -->
+                    <div class="row-fluid add-portfolio">
+                        <div class="pull-left">
+                           
+                            <span data-bind="if: AllLoaded() == false"><span>Fetching </span><span data-bind="text: ProjectsToLoad"></span><span> sprintboards...</span></span>
+                           
                         </div>
+                        
                     </div>
+                    <!-- End Add Project Row -->
 
+                    <div class="board-row" data-bind="foreach: Boards">
+                        <form data-bind="attr:{action: '/projects/share/' + $data.ProjectConfigId, id: 'shareme-' + $data.ProjectConfigId}" method='post'></form>
+                        <form data-bind="if: $data.IsShared, attr:{action: '/projects/removeshare/' + $data.ProjectConfigId, id: 'unshareme-' + $data.ProjectConfigId}" method='post'></form>
+                        <div class="row-fluid portfolio-block">
+                            <div class="span7 portfolio-text">
+                                <i data-bind="css: { 'icon-ok green': Status == 'On Track', 'icon-remove red': Status == 'Off Track', 'icon-warning-sign orange': Status == 'Warning', 'icon-trash': Status == 'Removed' }" class="icon-3x pull-left icon-border" style="margin: 10px;"></i>
+                                <div class="portfolio-text-info">
+                                    <h4>
+                                        <a data-bind="visible: $data.Status != 'Removed', text: $data.Name, attr:{ href:'/projects/preview/' + $data.ProjectConfigId}"></a>
+                                        <span data-bind="visible: $data.Status == 'Removed', text: $data.Name"></span>
+                                        <span data-bind="if: $data.IsShared && $data.HasDiffs" style='font-size:15px;'> has been updated in Asana</span>
+                                    </h4>
 
+                                    <p style="margin-left: 1px;">
 
+                                        <!--<a data-bind="if: $data.Status != 'Removed', attr:{ href:'/projects/edit/' + $data.ProjectConfigId}">
+                                            Edit <i class="icon-edit">
+                                            </i>
+                                        </a> <span style="font-size: 11px;" data-bind="if: $data.Status != 'Removed'">| </span>
 
+                                        <a data-bind="if: $data.IsShared == false && $data.Status != 'Removed', click: $parent.PublishBoard" href="#">
+                                            Publish <i class="icon-rss">
+                                            </i>
+                                        </a>-->
 
+                                        <!--<div>
+                                            
+                                            <span data-bind="text: $data.CalcCompletePercent + '%'"></span> Complete 
+                                        </div>--> 
 
+                                        <!--<a data-bind="if: $data.IsShared, attr:{ href:'/share/' + $data.RefNo}">
+                                            View Published <i class="icon-external-link">
+                                            </i>
+                                        </a> <span style="font-size: 11px;" data-bind="if: $data.IsShared">| </span>
 
-                    <div data-desktop="span6" data-tablet="span6" class="responsive span6">
-                        <div style="" class="dashboard-stat blue">
+                                        <a data-bind="if: $data.IsShared && $data.HasDiffs, click: $parent.PublishBoard" href="#">
+                                            Republish <i class="icon-rss">
+                                            </i>
+                                        </a><span style="font-size: 11px;" data-bind="if: $data.IsShared && $data.HasDiffs">| </span>
 
-                            <div style="float:left; margin-left:20px" class="details ">
-                                <div class="number" style="text-align:left;margin-bottom:20px">Status Update </div>
+                                        <a data-bind="if: $data.IsShared, click: $parent.UnpublishBoard" href="#">
+                                            Unpublish <i class="icon-minus-sign">
+                                            </i>
+                                        </a><span style="font-size: 11px;" data-bind="if: $data.IsShared">| </span>-->
 
-                                <span class="hidden-phone"><div class="scroller desc" data-height="150px" style="text-align:left;margin-bottom:20px" data-bind="html: Update"></div></span>
-                                <span class="visible-phone"><div class="desc" style="text-align:left;margin-bottom:20px" data-bind="html: Update"></div></span>
+                                        <a data-bind="if: $data.IsShared, click: $parent.GetLink" href="#">
+                                            <span data-bind="attr:{ id: 'linktext-' + $data.ProjectConfigId}">Get Link </span><i class="icon-link">
+                                            </i>
+                                        </a><input type="text" style="display:none;" data-bind="if: $data.IsShared, attr:{ id: 'link-' + $data.ProjectConfigId, value: '@domain' + 'share/' + $data.RefNo}" />
+                                        <!--<span data-bind="if: $data.Status != 'Removed'" style="font-size: 11px;">| </span>-->
 
-
-                            </div>
-                            <span class="more">&nbsp;</span>
-                        </div>
-                    </div>
-
-
-
-                </div>
-                <!-- END PROJECT OVERVIEW & STATUS UPDATE-->
-                <!-- BEGIN ANALYTICS ROW-->
-                <div class="row-fluid">
-
-
-                    <div data-desktop="span3" data-tablet="span3" class="responsive span3">
-
-                        <div class="dashboard-stat darkblue">
-
-                            <div class="visual">
-                                <i class="icon-ok" data-bind="css: { 'icon-ok': Status() == 'On Track', 'icon-warning-sign': Status() == 'Warning', 'icon-remove': Status() == 'Off Track' }"></i>
-                            </div>
-                            <div class="details" style="width:137px">
-                                <div class="number" data-bind="text: Status"></div>
-                                <div class="desc">As of <span data-bind="text: moment(LastChangeDate()).format('ll')"></span></div>
-                            </div>
-                            <span class="more">&nbsp;</span>
-                        </div>
-                    </div>
-
-
-
-                    <div data-desktop="span3" data-tablet="span3" class="responsive span3">
-                        <div class="dashboard-stat darkblue">
-                            <div class="visual">
-                                <i class="icon-dashboard"></i>
-                            </div>
-                            <div class="details" style="width:137px">
-                                <div class="number"><span data-bind="text: CalcCompletePercent"></span>%</div>
-                                <div class="desc">Percent Complete</div>
-                            </div>
-                            <span class="more">&nbsp;</span>
-                        </div>
-                    </div>
-
-
-                    <a href="#milestones">
-                        <div data-desktop="span3" data-tablet="span3 " class="responsive span3">
-                            <div class="dashboard-stat darkblue">
-                                <div class="visual">
-                                    <i class="icon-flag"></i>
+                                        <!--<a href="#" data-bind="click: $parent.RemoveBoard">
+                                            Remove <i class="icon-trash"></i>
+                                        </a>-->
+                                    </p>
                                 </div>
-                                <div class="details" style="width:137px">
-
-                                    <div class="number"><span data-bind="text: RemainingMilestoneToCompleteCount"></span> of <span data-bind="text: MilestoneCount"></span></div>
-                                    <div class="desc">Milestones To Do</div>
-
-
-
+                            </div>
+                            <div class="span5" style="overflow: hidden;">
+                                <div class="portfolio-info displayinline mr30">
+                                    % Complete
+                                    <span data-bind="text: $data.CalcCompletePercent + '%'"></span>
                                 </div>
-                                <a href="page2.html?saucio=gettinggirlsontinder" class="more">
-                                    next page <i class="m-icon-swapdown m-icon-white"></i>
-                                </a>
+                                <div class="portfolio-info displayinline mr30">
+                                    Milestones To Do <span data-bind="text: $data.RemainingMilestoneToCompleteCount + ' of ' + $data.MilestoneCount">0 of 0</span>
+                                </div>
+                                <div class="portfolio-info displayinline mr30">
+                                    Discussion Items <span data-bind="text: $data.RemainingDiscussionsToCompleteCount">0</span>
+                                </div>
                             </div>
                         </div>
-                    </a>
-
-                    <a href="#discussion">
-                        <div data-desktop="span3" data-tablet="span3" class="responsive span3">
-                            <div class="dashboard-stat darkblue">
-                                <div class="visual">
-                                    <i class="icon-comments"></i>
-                                </div>
-                                <div class="details" style="width:137px">
-                                    <div class="number" data-bind="text: DiscussionCount"></div>
-                                    <div class="desc">Discussion Items</div>
-                                </div>
-                                <a href="#discussion" class="more">
-                                    View more <i class="m-icon-swapdown m-icon-white"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- END ANALYTICS ROW-->
-                <!-- ko foreach: MilestoneBlocks -->
-                <div id="milestones" class="row-fluid">
-
-                    <div class="span12">
-                        <!-- BEGIN SAMPLE TABLE PORTLET-->
-                        <div class="portlet box darkblue">
-                            <div class="portlet-title" style="background-color:#336699;">
-                                <h4 data-bind="text: Name"></h4>
-
-                            </div>
-                            <div style="padding:0px;" class="portlet-body">
-
-                                <ul class="events" data-bind="foreach: Tasks">
-
-                                    <li>
-                                        <span data-bind="html: formattedDate">
-                                        </span>
-                                        <span class="event-description">
-                                            <h4 data-bind="text: Name"></h4>
-                                            <p data-bind="html: Notes"></p>
-                                        </span>
-                                        <span data-bind="visible: IsComplete" class="ribbon tiny"><span class="ribbon-inner green-gradient">Done</span></span>
-                                    </li>
-                                </ul>
-
-                                <ul class="events" data-bind="visible: HasTasks() == false">
-
-                                    <li>
-
-                                        <span class="event-description">
-                                            <h4>No Milestones as of now.</h4>
-
-                                        </span>
-
-                                    </li>
-                                </ul>
-
-                            </div>
-                        </div>
-                        <!-- END SAMPLE TABLE PORTLET-->
                     </div>
 
                 </div>
-                <!-- /ko -->
-
-
-
-                <div id="discussion" class="row-fluid" data-bind="with: DiscussionBlock, visible: DiscussionBlock ">
-                    <div class="span12">
-                        <!-- BEGIN SAMPLE TABLE PORTLET-->
-                        <div class="portlet box darkblue">
-                            <div class="portlet-title" style="background-color:#336699;">
-                                <h4>Discussion Items</h4>
-
-                            </div>
-                            <div style="padding:0px;" class="portlet-body">
-
-
-                                <ul class="events" data-bind="foreach: Tasks">
-
-                                    <li>
-                                        <span data-bind="html: formattedDate">
-                                        </span>
-                                        <span class="event-description">
-                                            <h4 data-bind="text: Name"></h4>
-                                            <p data-bind="html: Notes"></p>
-                                        </span>
-                                        <span data-bind="visible: IsComplete" class="ribbon tiny"><span class="ribbon-inner green-gradient">Done</span></span>
-                                    </li>
-                                </ul>
-
-                                <ul class="events" data-bind="visible: HasTasks() == false">
-
-                                    <li>
-
-                                        <span class="event-description">
-                                            <h4>No Discussion Items as of now.</h4>
-
-                                        </span>
-
-                                    </li>
-                                </ul>
-
-
-                            </div>
-                        </div>
-                        <!-- END SAMPLE TABLE PORTLET-->
-                    </div>
-                </div>
-
-
-
-
-
 
             </div>
             <!-- END PAGE CONTAINER-->
@@ -421,173 +303,179 @@
     <script src="scripts/spin.min.js" type="text/javascript"></script>
     <script src="scripts/moment.min.js" type="text/javascript"></script>
 
+    <!-- END CORE PLUGINS -->
+
+
     <script type="text/javascript">
-
-        var opts = {
-            lines: 17,
-            length: 40,
-            width: 13,
-            radius: 41,
-            corners: 0,
-            rotate: 38,
-            trail: 45,
-            speed: 2.0,
-            direction: 1
-        };
-
-        var spinnerRooski = new Spinner(opts);
-        spinnerRooski.spin(document.getElementById('page-shell'));
 
         jQuery(document).ready(function () {
             // initiate layout and plugins
             App.init();
 
-            //@{
-            //    string domain = System.Configuration.ConfigurationManager.AppSettings["domain"];
-            //    string rr = this.Request.QueryString["r"];
-            //    string url = domain + "share/GetSharedSprintboard/" + Model.ProjectConfigId.ToString() + "?r=" + rr;
-            //http://dev.sprintboards.com/share/getsharedsprintboard/1191
-
-            //      }
-
-            function GetParameterValues(param) {
-                var url = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-                for (var i = 0; i < url.length; i++) {
-                    var urlparam = url[i].split('=');
-                    if (urlparam[0] == param) {
-                        return urlparam[1];
-                    }
-                }
-            }
-
-            
-            
-                    
             try {
-                var viewModel = null;
+                var projectsCount = 0;
 
-                //var sbId = GetParameterValues('sbid');
-                var sbId = 1191;
+                //@{
 
-                if (!sbId)
-                {
-                    alert("url not formed correctly." + sbId);
-                }
+                //    if(Model !=null)
+                //    {
+                //        @:projectsCount = @Model.Count();
+                //    }
+                //}
 
-                //alert(currentUrl);
-                                              
-                $.ajax({
-                    url: "http://dev.sprintboards.com/share/getsharedsprintboard/" + sbId,
-                    dataType: 'json',
-                    async: false,
-                    success: function (data) {
-                        if (data.Ok) {
-                            $('title').text('Sprintboards | ' + data.Board.Name);
+                var viewModel = function () {
+                    var self = this;
 
-                            viewModel = ko.mapping.fromJS(data.Board);
+                    self.pCount = ko.observable(projectsCount);
+                    self.Boards = ko.observableArray([]);
+                    self.AllLoaded = ko.observable(false);
 
-                            ko.applyBindings(viewModel);
+                    self.RemoveBoard = function (b, e) {
 
-                            spinnerRooski.stop();
+                        if (confirm("Are you sure you want to Remove this Sprintboard?")) {
+                            $.post('/projects/unlink/' + b.ProjectConfigId, function (data) {
+                                //$(e.target).parent('.board-row').hide('slow', function(){
+                                self.Boards.remove(b);
+                                //});
 
-                            $("#page-itself").show();
+                            });
+                        }
+
+                    };
+
+
+                    self.PublishBoard = function (b) {
+                        if (confirm("Are you sure you want to Publish this Sprintboard?")) {
+                            document.forms['shareme-' + b.ProjectConfigId].submit();
+                        }
+                    };
+
+
+                    self.UnpublishBoard = function (b) {
+                        if (confirm("Are you sure you want to Unpublish this Sprintboard?")) {
+                            document.forms['unshareme-' + b.ProjectConfigId].submit();
+                        }
+                    };
+
+                    self.GetLink = function (b) {
+                        var linky = $('#link-' + b.ProjectConfigId);
+
+                        linky.toggle();
+
+                        if (linky.is(':visible')) {
+                            $('#linktext-' + b.ProjectConfigId).text('Hide Link ');
+                            linky.select();
                         }
                         else {
-                            spinnerRooski.stop();
-                            //console.log(data);
-                            alert(data.Msg);
+                            $('#linktext-' + b.ProjectConfigId).text('Get Link ');
                         }
-                    }
-                });
 
-                if (!viewModel.HasDiffs()) {
-                    $('#share-option').hide();
-                }
+                    };
 
-            }
-            catch (err) {
+                    self.ProjectsTotal = ko.computed(function () {
+                        return (self.Boards().length);
+                    }, self);
 
-                spinnerRooski.stop();
-                $("#page-itself").show();
-                alert(err);
-            }
+                    self.ProjectsToLoad = ko.computed(function () {
 
-            //setup the share link click
-            $("#unlink, #share, #unshare").click(function () {
-                var id = $(this).attr("id");
+                        var todo = self.pCount() - self.ProjectsTotal();
 
-                if (id == "unlink") {
-                    if (confirm("Are you sure you want to Remove this Sprintboard?")) {
-                        var form = id + "-form";
-                        $("#" + form).submit();
-                    }
-                }
-                else if (id == "share") {
-                    if (confirm("Are you sure you want to Publish this Sprintboard?")) {
-                        var form = id + "-form";
-                        $("#" + form).submit();
-                    }
-                }
-                else if (id == "unshare") {
-                    if (confirm("Are you sure you want to Unpublish this Sprintboard?")) {
-                        var form = id + "-form";
-                        $("#" + form).submit();
-                    }
-                }
-                else {
-
-                    var form = id + "-form";
-                    $("#" + form).submit();
-                }
-                return false;
-            });
-
-            $("#theurl").click(function () {
-                $(this).select();
-            });
-
-            // @if (ViewBag.ShowGetLinkPopup != null && (bool)ViewBag.ShowGetLinkPopup)
-            //{
-            //@:$("#email").click();
-            //}
-        });
-    </script>
-
-    <!-- END CORE PLUGINS -->
-
-    <script type="text/javascript">
-        (function ($) {
-            $.fn.checkFileType = function (options) {
-                var defaults = {
-                    allowedExtensions: [],
-                    success: function () { },
-                    error: function () { }
-                };
-                options = $.extend(defaults, options);
-
-                return this.each(function () {
-
-                    $(this).on('change', function () {
-                        var value = $(this).val();
-                        var file = value.toLowerCase();
-
-                        if (file != '') {
-                            extension = file.substring(file.lastIndexOf('.') + 1);
-
-                            if ($.inArray(extension, options.allowedExtensions) == -1) {
-                                options.error();
-                                $(this).focus();
-                            } else {
-                                options.success();
+                        if (!self.AllLoaded()) {
+                            if (todo == 0) {
+                                self.AllLoaded(true);
                             }
                         }
+
+                        return todo;
+                    }, self);
+
+                    self.ProjectsOnTrack = ko.computed(function () {
+                        var ontrack = 0;
+                        ko.utils.arrayForEach(self.Boards(), function (b) {
+                            if (b.Status == "On Track") {
+                                ontrack++;
+                            }
+                        });
+                        return ontrack;
+                    }, self);
+
+                    self.MilestonesTodo = ko.computed(function () {
+                        var total = 0;
+                        ko.utils.arrayForEach(self.Boards(), function (b) {
+                            total += b.RemainingMilestoneToCompleteCount;
+                        });
+                        return total;
+                    }, self);
+
+                    self.DiscussionsTodo = ko.computed(function () {
+                        var total = 0;
+                        ko.utils.arrayForEach(self.Boards(), function (b) {
+                            total += b.RemainingDiscussionsToCompleteCount;
+                        });
+                        return total;
+                    }, self);
+
+                };
+
+                var myModel = new viewModel();
+
+                ko.applyBindings(myModel);
+
+                //$('#welcome-modal').modal('show');
+
+
+
+                var url = "http://dev.sprintboards.com/share/getsharedsprintboard/" + 1191;
+
+
+                //try {
+                    $.get(url, function (d) {
+                       
+                        if (d.Ok) {
+                            
+                            myModel.Boards.push(d.Board);
+                        }
+                        else {
+                           
+                            var pc = myModel.pCount(); myModel.pCount(pc - 1); alert(d.Msg);
+                        }
+
+
                     });
 
-                });
-            };
+                    //console.log("here", "here");
 
-        })(jQuery);
+                    
+
+                    //$.ajax({
+                    //    url: "http://dev.sprintboards.com/projects/getsprintboard/1191",
+                    //    dataType: 'json',
+                    //    async: false,
+                    //    success: function (data) {
+                    //        if (data.Ok) {
+                    //            console.log("here", "here");
+                    //            myModel.Boards.push(d.Board);
+                    //        }
+                    //        else {
+                    //            console.log("here", "here");
+                    //            var pc = myModel.pCount(); myModel.pCount(pc - 1); alert(d.Msg);
+                    //        }
+                    //    }
+                    //});
+
+            } catch (err) {
+                alert("error" + err);
+            }
+
+
+
+        });
+
     </script>
+
+
+
+
     <!--@RenderSection("scripts", false)-->
     <!-- END JAVASCRIPTS -->
 </body>
