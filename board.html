@@ -18,7 +18,7 @@
         currentUrl = url;
     }
 
-    alert(currentUrl);
+    //alert(currentUrl);
 
     </script>
 
@@ -243,7 +243,7 @@
 
 
                                 </div>
-                                <a href="page2.html?saucio=gettinggirlsontinder" class="more">
+                                <a href="page2.html" class="more">
                                     next page <i class="m-icon-swapdown m-icon-white"></i>
                                 </a>
                             </div>
@@ -467,7 +467,8 @@
                 var viewModel = null;
 
                 //var sbId = GetParameterValues('sbid');
-                var sbId = 1191;
+                //var sbId = 1191;
+                var sbId = localStorage.getItem("currentboard");
 
                 if (!sbId)
                 {

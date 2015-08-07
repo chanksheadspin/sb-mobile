@@ -163,6 +163,7 @@
                            
                             <span data-bind="if: AllLoaded() == false"><span>Fetching </span><span data-bind="text: ProjectsToLoad"></span><span> sprintboards...</span></span>
                            
+                            <a href="board.html" class="openboardlink">Open Board</a>
                         </div>
                         
                     </div>
@@ -176,7 +177,7 @@
                                 <i data-bind="css: { 'icon-ok green': Status == 'On Track', 'icon-remove red': Status == 'Off Track', 'icon-warning-sign orange': Status == 'Warning', 'icon-trash': Status == 'Removed' }" class="icon-3x pull-left icon-border" style="margin: 10px;"></i>
                                 <div class="portfolio-text-info">
                                     <h4>
-                                        <a data-bind="visible: $data.Status != 'Removed', text: $data.Name, attr:{ href:'/projects/preview/' + $data.ProjectConfigId}"></a>
+                                        <a data-bind="visible: $data.Status != 'Removed', text: $data.Name, attr:{ href:'#', onClick: 'OpenBoard(' + $data.ProjectConfigId + ')'}"></a>
                                         <span data-bind="visible: $data.Status == 'Removed', text: $data.Name"></span>
                                         <span data-bind="if: $data.IsShared && $data.HasDiffs" style='font-size:15px;'> has been updated in Asana</span>
                                     </h4>
@@ -319,6 +320,24 @@
 
     <script type="text/javascript">
 
+        //$(document).on("click", ".openboard", function (event) {
+
+        //    var boardUrl = $(event.target).parent().find($("input[name='strategy_sitchnum']")).val();
+            
+        //});
+
+        function OpenBoard(id)
+        {
+            //alert("openboard");
+
+            localStorage.setItem("currentboard", id);
+
+            //$(".openboardlink").click();
+
+            window.location = "board.html";
+        }
+
+
         jQuery(document).ready(function () {
             // initiate layout and plugins
             App.init();
@@ -436,6 +455,7 @@
                                                
                 var preBoards = [];
                 preBoards[0] = 1191;
+                preBoards[1] = 1192;
                 localStorage["boards"] = JSON.stringify(preBoards);
 
                 //...
@@ -453,7 +473,7 @@
                     $.get(url, function (d) {
 
                         if (d.Ok) {
-
+                            console.log(d.Board);
                             myModel.Boards.push(d.Board);
                         }
                         else {
