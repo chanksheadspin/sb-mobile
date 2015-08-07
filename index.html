@@ -163,7 +163,6 @@
                            
                             <span data-bind="if: AllLoaded() == false"><span>Fetching </span><span data-bind="text: ProjectsToLoad"></span><span> sprintboards...</span></span>
                            
-                            <a href="board.html" class="openboardlink">Open Board</a>
                         </div>
                         
                     </div>
@@ -453,10 +452,10 @@
 
                 //$('#welcome-modal').modal('show');
                                                
-                var preBoards = [];
-                preBoards[0] = 1191;
-                preBoards[1] = 1192;
-                localStorage["boards"] = JSON.stringify(preBoards);
+                //var preBoards = [];
+                //preBoards[0] = 1191;
+                //preBoards[1] = 1192;
+                //localStorage["boards"] = JSON.stringify(preBoards);
 
                 //...
                 var boards = JSON.parse(localStorage["boards"]);
