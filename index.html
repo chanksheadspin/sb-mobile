@@ -36,7 +36,7 @@
 
 </head>
 
-<body class="page-header-fixed page-full-width" id="sbmobilebody" style="margin-top: 20px;">
+<body class="page-header-fixed page-full-width" id="sbmobilebody">
 
     <div class="header navbar navbar-inverse navbar-fixed-top">
 
@@ -324,6 +324,14 @@
         //    var boardUrl = $(event.target).parent().find($("input[name='strategy_sitchnum']")).val();
             
         //});
+
+        function onDeviceReady() {
+            //if (parseFloat(window.device.version) === 7.0) {
+                document.body.style.marginTop = "20px";
+            //}
+        }
+
+        document.addEventListener('deviceready', onDeviceReady, false);
 
         function OpenBoard(id)
         {
