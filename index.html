@@ -58,13 +58,10 @@
 
     <div class="page-container">
 
-
         <div class="page-content pt30" id="page-shell">
 
             <div class="row-fluid">
                 <div class="span4 responsive" data-tablet="span4" data-desktop="span4">
-
-
                     <div class="dashboard-stat blue">
                         <div class="visual">
                             <i class="icon-medkit"></i>
@@ -175,7 +172,7 @@
                         <form data-bind="attr:{action: '/projects/share/' + $data.ProjectConfigId, id: 'shareme-' + $data.ProjectConfigId}" method='post'></form>
                         <form data-bind="if: $data.IsShared, attr:{action: '/projects/removeshare/' + $data.ProjectConfigId, id: 'unshareme-' + $data.ProjectConfigId}" method='post'></form>
                         <div class="row-fluid portfolio-block">
-                            <div class="span7 portfolio-text">
+                            <div class="span9 portfolio-text">
                                 <i data-bind="css: { 'icon-ok green': Status == 'On Track', 'icon-remove red': Status == 'Off Track', 'icon-warning-sign orange': Status == 'Warning', 'icon-trash': Status == 'Removed' }" class="icon-3x pull-left icon-border" style="margin: 10px;"></i>
                                 <div class="portfolio-text-info">
                                     <h4>
@@ -227,8 +224,7 @@
                                         </a>-->
                                     </p>
                                 </div>
-                            </div>
-                            <div class="span5" style="overflow: hidden;">
+
                                 <div class="portfolio-info displayinline mr30">
                                     % Complete
                                     <span data-bind="text: $data.CalcCompletePercent + '%'"></span>
@@ -239,7 +235,22 @@
                                 <div class="portfolio-info displayinline mr30">
                                     Discussion Items <span data-bind="text: $data.RemainingDiscussionsToCompleteCount">0</span>
                                 </div>
+
                             </div>
+
+                            <!--<div class="span3" style="overflow: hidden;">
+                                <div class="portfolio-info displayinline mr30">
+                                    % Complete
+                                    <span data-bind="text: $data.CalcCompletePercent + '%'"></span>
+                                </div>
+                                <div class="portfolio-info displayinline mr30">
+                                    Milestones To Do <span data-bind="text: $data.RemainingMilestoneToCompleteCount + ' of ' + $data.MilestoneCount">0 of 0</span>
+                                </div>
+                                <div class="portfolio-info displayinline mr30">
+                                    Discussion Items <span data-bind="text: $data.RemainingDiscussionsToCompleteCount">0</span>
+                                </div>
+                            </div>-->
+
                         </div>
                     </div>
 
@@ -424,24 +435,34 @@
                 //$('#welcome-modal').modal('show');
 
 
+                var boards = [];
 
-                var url = "http://dev.sprintboards.com/share/getsharedsprintboard/" + 1191;
+                boards[0] = 1191;
+                boards[1] = 1192;
+
+                for (i = 0; i < boards.length; i++)
+                {
+                    var url = "http://dev.sprintboards.com/share/getsharedsprintboard/" + boards[i];
 
 
-                //try {
+                    //try {
                     $.get(url, function (d) {
-                       
+
                         if (d.Ok) {
-                            
+
                             myModel.Boards.push(d.Board);
                         }
                         else {
-                           
+
                             var pc = myModel.pCount(); myModel.pCount(pc - 1); alert(d.Msg);
                         }
 
 
                     });
+
+                }
+
+               
 
                     //console.log("here", "here");
 
