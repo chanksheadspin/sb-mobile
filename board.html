@@ -11,16 +11,19 @@
     var currentUrl = "";
 
     function handleOpenURL(url) {
-        //setTimeout(function () {
-        //    alert("received url: " + url);
-        //    currentUrl = url;
-        //}, 0);
-        //currentUrl = url;
-
-        alert(url);
+        setTimeout(function () {
+            alert("received url: " + url);
+            currentUrl = url;
+        }, 5000);
+        currentUrl = url;
+        //console.log("here", url);
+        
+        //alert(url);
     }
 
-    //alert(currentUrl);
+        //alert(currentUrl);
+
+
 
     </script>
 
@@ -56,30 +59,28 @@
 
 <body class="page-header-fixed page-full-width" id="sbmobilebody">
 
-    <div class="header navbar navbar-inverse navbar-fixed-top">
+    <div class="header navbar navbar-inverse navbar-fixed-top" style="position: fixed;">
 
 
 
         <div style="height: 20px; background-color: #ffffff;"></div>
 
 
-                        
+
         <div class="navbar-inner">
             <div class="container-fluid">
-               
+
                 <a class="brand" href="index.html">
                     <img src="img/sblogosm.png" alt="Sprintboards logo" />
                 </a>
 
-                <a href="index.html" class="" style="color: #ffffff;">Back</a>
-               
                 <!--<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
                     <img src="img/menu-toggler.png" alt="" />
                 </a>-->
-               
+
             </div>
         </div>
-      
+
     </div>
 
     <div class="page-container">
