@@ -227,9 +227,9 @@
                                         </a><input type="text" style="display:none;" data-bind="if: $data.IsShared, attr:{ id: 'link-' + $data.ProjectConfigId, value: '@domain' + 'share/' + $data.RefNo}" />
                                         <!--<span data-bind="if: $data.Status != 'Removed'" style="font-size: 11px;">| </span>-->
 
-                                        <!--<a href="#" data-bind="click: $parent.RemoveBoard">
+                                        <a href="#" data-bind="click: $parent.RemoveBoard">
                                             Remove <i class="icon-trash"></i>
-                                        </a>-->
+                                        </a>
                                     </p>
                                 </div>
 
@@ -390,20 +390,25 @@
                         //    });
                         //}
 
-                        self.Boards.remove(b);
-
 
                         
                         var boards = JSON.parse(localStorage["boards"]);
 
 
-                        var index = boards.indexOf(b.ProjectConfigId);
+                        var index = boards.indexOf(b.ProjectConfigId.toString());
 
+                        console.log("projectconfigid", b.ProjectConfigId);
+                        console.log("herenow", index);
+                        console.log("boards", boards);
+                        
                         if (index > -1) {
                             boards.splice(index, 1);
                         }
-
+                        
                         localStorage["boards"] = JSON.stringify(boards);
+
+                        self.Boards.remove(b);
+
 
                     };
 
@@ -507,7 +512,7 @@
                     $.get(url, function (d) {
 
                         if (d.Ok) {
-                            console.log(d.Board);
+                            //console.log(d.Board);
                             myModel.Boards.push(d.Board);
                         }
                         else {

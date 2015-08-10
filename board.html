@@ -414,10 +414,9 @@
             setTimeout(function () {
                 //alert("received url: " + url);
                 currentUrl = url;
-            }, 200);
-            //console.log("here", url);
+                      
 
-            //alert(url);
+            }, 200);
         }
 
         if (!currentUrl)
@@ -461,25 +460,22 @@
                     }
                 }
             }
-
-            
-
-            var boards = JSON.parse(localStorage["boards"]);
-
-            if (boards.indexOf(sbId) == null)
-            {
-                boards.push(sbId);
-            }
-
-            localStorage["boards"] = JSON.stringify(boards);
+                      
             
                     
             try {
                 var viewModel = null;
 
                 var sbId = GetParameterValues('sbid');
-                //var sbId = 1191;
-                //var sbId = localStorage.getItem("currentboard");
+                
+                var boards = JSON.parse(localStorage["boards"]);
+
+                //console.log("here", sbId);
+                if (boards.indexOf(sbId) < 0) {
+                    boards.push(sbId);
+                }
+
+                localStorage["boards"] = JSON.stringify(boards);
 
                 if (!sbId)
                 {
