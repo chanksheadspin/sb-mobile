@@ -183,7 +183,8 @@
                                 <i data-bind="css: { 'icon-ok green': Status == 'On Track', 'icon-remove red': Status == 'Off Track', 'icon-warning-sign orange': Status == 'Warning', 'icon-trash': Status == 'Removed' }" class="icon-3x pull-left icon-border" style="margin: 10px;"></i>
                                 <div class="portfolio-text-info">
                                     <h4>
-                                        <a data-bind="visible: $data.Status != 'Removed', text: $data.Name, attr:{ href:'#', onClick: 'OpenBoard(' + $data.ProjectConfigId + ')'}"></a>
+                                        <!--<a data-bind="visible: $data.Status != 'Removed', text: $data.Name, attr:{ href:'#', onClick: 'OpenBoard(' + $data.ProjectConfigId + ')'}"></a>-->
+                                        <a data-bind="visible: $data.Status != 'Removed', text: $data.Name, attr:{ href:'board.html?sbid=' + $data.ProjectConfigId }"></a>
                                         <span data-bind="visible: $data.Status == 'Removed', text: $data.Name"></span>
                                         <span data-bind="if: $data.IsShared && $data.HasDiffs" style='font-size:15px;'> has been updated in Asana</span>
                                     </h4>
@@ -380,14 +381,29 @@
 
                     self.RemoveBoard = function (b, e) {
 
-                        if (confirm("Are you sure you want to Remove this Sprintboard?")) {
-                            $.post('/projects/unlink/' + b.ProjectConfigId, function (data) {
-                                //$(e.target).parent('.board-row').hide('slow', function(){
-                                self.Boards.remove(b);
-                                //});
+                        //if (confirm("Are you sure you want to Remove this Sprintboard?")) {
+                        //    $.post('/projects/unlink/' + b.ProjectConfigId, function (data) {
+                        //        //$(e.target).parent('.board-row').hide('slow', function(){
+                        //        self.Boards.remove(b);
+                        //        //});
 
-                            });
+                        //    });
+                        //}
+
+                        self.Boards.remove(b);
+
+
+                        
+                        var boards = JSON.parse(localStorage["boards"]);
+
+
+                        var index = boards.indexOf(b.ProjectConfigId);
+
+                        if (index > -1) {
+                            boards.splice(index, 1);
                         }
+
+                        localStorage["boards"] = JSON.stringify(boards);
 
                     };
 
@@ -471,10 +487,10 @@
 
                 //$('#welcome-modal').modal('show');
                                                
-                var preBoards = [];
-                preBoards[0] = 1191;
-                preBoards[1] = 1192;
-                localStorage["boards"] = JSON.stringify(preBoards);
+                //var preBoards = [];
+                //preBoards[0] = 1191;
+                //preBoards[1] = 1192;
+                //localStorage["boards"] = JSON.stringify(preBoards);
 
                 //...
                 var boards = JSON.parse(localStorage["boards"]);
