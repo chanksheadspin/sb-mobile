@@ -468,22 +468,32 @@
 
                 var sbId = GetParameterValues('sbid');
                 
-                var boards = JSON.parse(localStorage["boards"]);
+                var boards = [];
 
-                console.log("here", boards);
-                
+                //if (localStorage["boards"] == null)
+                //{
+
+                //}
+
+                if (localStorage["boards"] != null)
+                {
+                    var boards = JSON.parse(localStorage["boards"]);
+
+                    
+                }
+
                 if (boards.indexOf(sbId) < 0) {
                     boards.push(sbId);
                 }
 
                 localStorage["boards"] = JSON.stringify(boards);
 
-                if (!sbId)
-                {
+                if (!sbId) {
                     alert("url not formed correctly." + sbId);
                 }
 
                 console.log("localstorage", localStorage["boards"]);
+              
 
                 //alert(currentUrl);
                                               

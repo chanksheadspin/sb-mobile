@@ -335,15 +335,9 @@
             
         //});
 
-        function onDeviceReady() {
-            //if (parseFloat(window.device.version) === 7.0) {
-                document.body.style.marginTop = "20px";
-            //}
+        //localStorage.removeItem("boards");
 
-                alert("here");
-        }
-
-        document.addEventListener('deviceready', onDeviceReady, false);
+       
 
         function OpenBoard(id)
         {
@@ -398,7 +392,12 @@
                         //console.log("herenow", index);
                         //console.log("boards", boards);
 
-                        alert(index);
+
+                        setTimeout(function () {
+                            alert(index);
+
+
+                        }, 200);
                         
                         if (index > -1) {
                             boards.splice(index, 1);
@@ -407,7 +406,6 @@
                         localStorage["boards"] = JSON.stringify(boards);
 
                         self.Boards.remove(b);
-
                     };
 
 
@@ -497,13 +495,14 @@
 
                 //...
                 var boards = JSON.parse(localStorage["boards"]);
-
-
+                
                 //boards[0] = value;
                 //boards[1] = 1192;
 
                 for (i = 0; i < boards.length; i++)
                 {
+                    //console.log("here", boards[i]);
+
                     var url = "http://dev.sprintboards.com/share/getsharedsprintboard/" + boards[i];
                     
                     //try {
@@ -522,6 +521,8 @@
                     });
 
                 }
+
+                //localStorage.RemoveItem("boards");
 
                
 
