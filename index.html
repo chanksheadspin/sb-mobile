@@ -392,16 +392,26 @@
                         //console.log("herenow", index);
                         //console.log("boards", boards);
 
-
-                        setTimeout(function () {
-                            alert(index);
-
-
-                        }, 200);
                         
-                        if (index > -1) {
-                            boards.splice(index, 1);
+                        for (i = 0; i < boards.length; i++)
+                        {
+                            if (boards[i] == b.ProjectConfigId.toString())
+                            {
+                                boards.splice(i, 1);
+                            }
+
                         }
+
+
+                        //setTimeout(function () {
+                        //    alert(index);
+
+
+                        //}, 200);
+                        
+                        //if (index > -1) {
+                        //    boards.splice(index, 1);
+                        //}
                         
                         localStorage["boards"] = JSON.stringify(boards);
 

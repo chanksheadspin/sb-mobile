@@ -477,12 +477,20 @@
 
                 if (localStorage["boards"] != null)
                 {
-                    var boards = JSON.parse(localStorage["boards"]);
+                    boards = JSON.parse(localStorage["boards"]);
 
                     
                 }
 
-                if (boards.indexOf(sbId) < 0) {
+                var isIn = false;
+                for (i = 0; i < boards.length; i++) {
+                    if (boards[i] == b.ProjectConfigId.toString()) {
+                        isIn = true;
+                    }
+
+                }
+
+                if (isIn == false) {
                     boards.push(sbId);
                 }
 
