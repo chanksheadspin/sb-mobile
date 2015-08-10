@@ -390,16 +390,15 @@
                         //    });
                         //}
 
-
-                        
                         var boards = JSON.parse(localStorage["boards"]);
-
 
                         var index = boards.indexOf(b.ProjectConfigId.toString());
 
-                        console.log("projectconfigid", b.ProjectConfigId);
-                        console.log("herenow", index);
-                        console.log("boards", boards);
+                        //console.log("projectconfigid", b.ProjectConfigId);
+                        //console.log("herenow", index);
+                        //console.log("boards", boards);
+
+                        alert(index);
                         
                         if (index > -1) {
                             boards.splice(index, 1);
@@ -408,7 +407,6 @@
                         localStorage["boards"] = JSON.stringify(boards);
 
                         self.Boards.remove(b);
-
 
                     };
 

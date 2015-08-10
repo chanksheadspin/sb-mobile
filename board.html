@@ -470,7 +470,8 @@
                 
                 var boards = JSON.parse(localStorage["boards"]);
 
-                //console.log("here", sbId);
+                console.log("here", boards);
+                
                 if (boards.indexOf(sbId) < 0) {
                     boards.push(sbId);
                 }
@@ -481,6 +482,8 @@
                 {
                     alert("url not formed correctly." + sbId);
                 }
+
+                console.log("localstorage", localStorage["boards"]);
 
                 //alert(currentUrl);
                                               
