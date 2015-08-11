@@ -10,37 +10,24 @@
     <script type="text/javascript">
        
         function handleOpenURL(url) {
-            //setTimeout(function () {
-            //    //alert("received url: " + url);
+            setTimeout(function () {
+            
 
-            //    var sbId = GetParameterValues('sbid', url);
+                var sbId = GetParameterValues('sbid', url);
 
-            //    //alert(sbId);
+                if (sbId > 0) {
 
-            //    if (sbId > 0) {
+                    localStorage["currentboardid"] = sbId;
+                    window.location = "board.html";
 
-            //        //alert("redirecting to:" + sbId);
-
-            //        window.location = "board.html?sbid=" + sbId;
-
-            //    }
-            //}, 3000);
+                }
 
 
-            //alert("received url: " + url);
 
-            var sbId = GetParameterValues('sbid', url);
+            }, 10000);
 
-            //alert(sbId);
 
-            if (sbId > 0) {
-
-                //alert("redirecting to:" + sbId);
-
-                localStorage["currentboardid"] = sbId;
-                window.location = "board.html";
-
-            }
+           
 
         }
 
