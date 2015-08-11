@@ -8,26 +8,38 @@
 <head>
 
     <script type="text/javascript">
-       
+
+      
         function handleOpenURL(url) {
-            setTimeout(function () {
+            //setTimeout(function () {
             
 
+            //    var sbId = GetParameterValues('sbid', url);
+
+            //    if (sbId > 0) {
+
+            //        localStorage["currentboardid"] = sbId;
+            //        window.location = "board.html";
+
+            //    }
+
+
+
+            //}, 10000);
+
+
+            setTimeout(function () {
+                // This function is triggered by the LaunchMyApp Plugin
                 var sbId = GetParameterValues('sbid', url);
 
-                if (sbId > 0) {
-
+                if (sbId <= 0) {
+                    handleOpenURL(url);
+                } else {
                     localStorage["currentboardid"] = sbId;
                     window.location = "board.html";
-
                 }
-
-
-
-            }, 10000);
-
-
-           
+                // This timeout of at least 3 seconds is necessary - otherwise the handleOpenURL() function does not work when an external link is clicked and the App is closed.
+            }, 3000);
 
         }
 
