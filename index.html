@@ -8,18 +8,42 @@
 <head>
 
     <script type="text/javascript">
-        var currentUrl = "";
-
+       
         function handleOpenURL(url) {
-            setTimeout(function () {
-                alert("received url: " + url);
+            //setTimeout(function () {
+            //    //alert("received url: " + url);
 
-                currentUrl = url;
+            //    var sbId = GetParameterValues('sbid', url);
 
-                LoadIndex();
-            }, 3000);
+            //    //alert(sbId);
+
+            //    if (sbId > 0) {
+
+            //        //alert("redirecting to:" + sbId);
+
+            //        window.location = "board.html?sbid=" + sbId;
+
+            //    }
+            //}, 3000);
+
+
+            //alert("received url: " + url);
+
+            var sbId = GetParameterValues('sbid', url);
+
+            //alert(sbId);
+
+            if (sbId > 0) {
+
+                //alert("redirecting to:" + sbId);
+
+                window.location = "board.html?sbid=" + sbId;
+
+            }
 
         }
+
+
 
     </script>
 
@@ -366,8 +390,8 @@
             window.location = "board.html";
         }
 
-        function GetParameterValues(param) {
-            var url = currentUrl.slice(currentUrl.indexOf('?') + 1).split('&');
+        function GetParameterValues(param, currUrl) {
+            var url = currUrl.slice(currUrl.indexOf('?') + 1).split('&');
             for (var i = 0; i < url.length; i++) {
                 var urlparam = url[i].split('=');
                 if (urlparam[0] == param) {
@@ -376,32 +400,25 @@
             }
         }
 
-        function LoadIndex() {
-            var sbId = GetParameterValues('sbid');
-
-            alert(sbId);
-
-            if (sbId > 0) {
-
-                alert("redirecting to:" + sbId);
-
-                window.location = "board.html?sbid=" + sbId;
-
-            }
-        }
-
-
+        
         jQuery(document).ready(function () {
             // initiate layout and plugins
             App.init();
 
 
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false) {
-               
-                currentUrl = window.location.href;
+            //if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false) {
+            //    var sbId = GetParameterValues('sbid');
 
-                LoadIndex();
-            }
+            //    alert(sbId);
+
+            //    if (sbId > 0) {
+
+            //        alert("redirecting to:" + sbId);
+
+            //        window.location = "board.html?sbid=" + sbId;
+
+            //    }
+            //}
 
            
            
