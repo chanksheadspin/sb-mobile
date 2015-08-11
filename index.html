@@ -12,12 +12,14 @@
 
         function handleOpenURL(url) {
             setTimeout(function () {
-                //alert("received url: " + url);
+                alert("received url: " + url);
                 currentUrl = url;
 
 
             }, 500);
         }
+
+        
 
         
     </script>
@@ -380,17 +382,19 @@
             // initiate layout and plugins
             App.init();
 
-
-            if (!currentUrl)
-            {
+            if (!currentUrl) {
+                currentUrl = window.location.href;
+            }
+            
+                
                 if (currentUrl.indexOf("board.html") > -1)
                 {
                     var sbId = GetParameterValues('sbid');
-
+                    
                     window.location = "board.html?sbid=" + sbId;
 
                 }
-            }
+           
 
 
             try {
