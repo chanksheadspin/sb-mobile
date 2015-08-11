@@ -386,6 +386,10 @@
                 alert("here");
                 currentUrl = window.location.href;
             }
+            else
+            {
+                alert("oniphone" + currentUrl);
+            }
             
 
             //if (!currentUrl) {
@@ -394,7 +398,9 @@
 
                 //if (currentUrl.indexOf("board.html") > -1)
                 //{
-                    var sbId = GetParameterValues('sbid');
+            var sbId = GetParameterValues('sbid');
+
+            alert("redirecting to:" + sbId);
                     
                     window.location = "board.html?sbid=" + sbId;
 
