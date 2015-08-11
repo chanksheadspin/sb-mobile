@@ -430,15 +430,15 @@
         var spinnerRooski = new Spinner(opts);
         spinnerRooski.spin(document.getElementById('page-shell'));
 
-        function GetParameterValues(param, currUrl) {
-            var url = currUrl.slice(currUrl.indexOf('?') + 1).split('&');
-            for (var i = 0; i < url.length; i++) {
-                var urlparam = url[i].split('=');
-                if (urlparam[0] == param) {
-                    return urlparam[1];
-                }
-            }
-        }
+        //function GetParameterValues(param, currUrl) {
+        //    var url = currUrl.slice(currUrl.indexOf('?') + 1).split('&');
+        //    for (var i = 0; i < url.length; i++) {
+        //        var urlparam = url[i].split('=');
+        //        if (urlparam[0] == param) {
+        //            return urlparam[1];
+        //        }
+        //    }
+        //}
 
         jQuery(document).ready(function () {
             // initiate layout and plugins
@@ -459,8 +459,6 @@
             try {
 
                 var viewModel = null;
-
-                currentUrl = url;
 
                 var sbId = localStorage["currentboardid"];
                 alert("sbid: = " + sbId);
