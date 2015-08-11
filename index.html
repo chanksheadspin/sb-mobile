@@ -20,18 +20,21 @@
                     window.location = "board.html";
 
                 }
+				
+				alert("handle" + invokeString);
 
-            }, 10000);
+            }, 200);
 			
 			
 			document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-    if ('invokeString' in window) {
-        alert('onDeviceReady: ' + invokeString);
-    } else {
-        alert('onDeviceReady: no invokeString');
-    }    
+    //if ('invokeString' in window) {
+    //    alert('onDeviceReady: ' + invokeString);
+    //} else {
+    //    alert('onDeviceReady: no invokeString');
+    //}
+alert("test" + invokeString);	
 }
 
 
