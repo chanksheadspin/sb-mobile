@@ -12,7 +12,7 @@
 
         function handleOpenURL(url) {
             setTimeout(function () {
-                alert("received url: " + url);
+                //alert("received url: " + url);
                 currentUrl = url;
 
 
@@ -385,8 +385,8 @@
             if (!currentUrl) {
                 currentUrl = window.location.href;
             }
-            
-                
+
+            alert(currentUrl);
                 if (currentUrl.indexOf("board.html") > -1)
                 {
                     var sbId = GetParameterValues('sbid');
