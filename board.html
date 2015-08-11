@@ -487,12 +487,17 @@
                 }
 
                 var isIn = false;
-                for (i = 0; i < boards.length; i++) {
-                    if (boards[i] == sbId) {
-                        isIn = true;
-                    }
+                if (boards != null && boards.length > 0)
+                {
+                    for (i = 0; i < boards.length; i++) {
+                        console.log("here", boards[i]);
+                        if (boards[i] == sbId) {
+                            isIn = true;
+                        }
 
+                    }
                 }
+                
 
                 if (isIn == false) {
                     boards.push(sbId);
