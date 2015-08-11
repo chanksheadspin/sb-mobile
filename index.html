@@ -16,7 +16,7 @@
                 currentUrl = url;
 
 
-            }, 200);
+            }, 500);
         }
 
 
@@ -528,22 +528,33 @@
                 {
                     //console.log("here", boards[i]);
 
-                    var url = "http://dev.sprintboards.com/share/getsharedsprintboard/" + boards[i];
+                    if (boards[i] == null)
+                    {
+                        console.log(boards[i]);
+                        boards[i].remove();
+                    }
+                    else
+                    {
+                        var url = "http://dev.sprintboards.com/share/getsharedsprintboard/" + boards[i];
+
+                        //try {
+                        $.get(url, function (d) {
+
+                            if (d.Ok) {
+                                //console.log(d.Board);
+                                myModel.Boards.push(d.Board);
+                            }
+                            else {
+
+                                var pc = myModel.pCount(); myModel.pCount(pc - 1); alert(d.Msg);
+                            }
+
+
+                        });
+                    }
+
+
                     
-                    //try {
-                    $.get(url, function (d) {
-
-                        if (d.Ok) {
-                            //console.log(d.Board);
-                            myModel.Boards.push(d.Board);
-                        }
-                        else {
-
-                            var pc = myModel.pCount(); myModel.pCount(pc - 1); alert(d.Msg);
-                        }
-
-
-                    });
 
                 }
 
