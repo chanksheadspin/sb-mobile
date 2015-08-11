@@ -383,12 +383,13 @@
 
             if (!currentUrl)
             {
-                if (currentUrl.indexOf("board.html") > 0)
+                if (currentUrl.indexOf("board.html") > -1)
                 {
                     var sbId = GetParameterValues('sbid');
 
                     window.location = "board.html?sbid=" + sbId;
-                    }
+
+                }
             }
 
 
