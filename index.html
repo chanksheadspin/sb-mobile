@@ -376,6 +376,20 @@
             }
         }
 
+        function LoadIndex() {
+            var sbId = GetParameterValues('sbid');
+
+            alert(sbId);
+
+            if (sbId > 0) {
+
+                alert("redirecting to:" + sbId);
+
+                window.location = "board.html?sbid=" + sbId;
+
+            }
+        }
+
 
         jQuery(document).ready(function () {
             // initiate layout and plugins
@@ -389,19 +403,7 @@
                 LoadIndex();
             }
 
-            function LoadIndex() {
-                var sbId = GetParameterValues('sbid');
-
-                alert(sbId);
-
-                if (sbId > 0) {
-
-                    alert("redirecting to:" + sbId);
-
-                    window.location = "board.html?sbid=" + sbId;
-
-                }
-            }
+           
            
 
 
