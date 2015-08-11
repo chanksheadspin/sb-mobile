@@ -21,26 +21,8 @@
 
                 }
 				
-				alert("handle" + invokeString);
-
             }, 200);
 			
-			
-			
-
-            //setTimeout(function () {
-            //    // This function is triggered by the LaunchMyApp Plugin
-            //    var sbId = GetParameterValues('sbid', url);
-
-            //    if (sbId <= 0) {
-            //        handleOpenURL(url);
-            //    } else {
-            //        localStorage["currentboardid"] = sbId;
-            //        window.location = "board.html";
-            //    }
-            //    // This timeout of at least 3 seconds is necessary - otherwise the handleOpenURL() function does not work when an external link is clicked and the App is closed.
-            //}, 3000);
-
         }
 
 
@@ -369,23 +351,10 @@
 
     <script type="text/javascript">
 
-        //$(document).on("click", ".openboard", function (event) {
-
-        //    var boardUrl = $(event.target).parent().find($("input[name='strategy_sitchnum']")).val();
-            
-        //});
-
-        //localStorage.removeItem("boards");
-
-       
-
         function OpenBoard(id)
         {
-            //alert("openboard");
-
+          
             localStorage.setItem("currentboard", id);
-
-            //$(".openboardlink").click();
 
             window.location = "board.html";
         }
@@ -404,48 +373,9 @@
         jQuery(document).ready(function () {
             // initiate layout and plugins
             App.init();
-			
-			
-			document.addEventListener("deviceready", onDeviceReady, false);
-
-function onDeviceReady() {
-    //if ('invokeString' in window) {
-    //    alert('onDeviceReady: ' + invokeString);
-    //} else {
-    //    alert('onDeviceReady: no invokeString');
-    //}
-alert("test");	
-}
-
-
-            //if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false) {
-            //    var sbId = GetParameterValues('sbid');
-
-            //    alert(sbId);
-
-            //    if (sbId > 0) {
-
-            //        alert("redirecting to:" + sbId);
-
-            //        window.location = "board.html?sbid=" + sbId;
-
-            //    }
-            //}
-
-           
-           
-
-
+				
             try {
                 var projectsCount = 0;
-
-                //@{
-
-                //    if(Model !=null)
-                //    {
-                //        @:projectsCount = @Model.Count();
-                //    }
-                //}
 
                 var viewModel = function () {
                     var self = this;
@@ -456,24 +386,10 @@ alert("test");
 
                     self.RemoveBoard = function (b, e) {
 
-                        //if (confirm("Are you sure you want to Remove this Sprintboard?")) {
-                        //    $.post('/projects/unlink/' + b.ProjectConfigId, function (data) {
-                        //        //$(e.target).parent('.board-row').hide('slow', function(){
-                        //        self.Boards.remove(b);
-                        //        //});
-
-                        //    });
-                        //}
-
                         var boards = JSON.parse(localStorage["boards"]);
 
                         var index = boards.indexOf(b.ProjectConfigId.toString());
 
-                        //console.log("projectconfigid", b.ProjectConfigId);
-                        //console.log("herenow", index);
-                        //console.log("boards", boards);
-
-                        
                         for (i = 0; i < boards.length; i++)
                         {
                             if (boards[i] == b.ProjectConfigId.toString())
@@ -483,17 +399,6 @@ alert("test");
 
                         }
 
-
-                        //setTimeout(function () {
-                        //    alert(index);
-
-
-                        //}, 200);
-                        
-                        //if (index > -1) {
-                        //    boards.splice(index, 1);
-                        //}
-                        
                         localStorage["boards"] = JSON.stringify(boards);
 
                         self.Boards.remove(b);
@@ -577,30 +482,12 @@ alert("test");
 
                 ko.applyBindings(myModel);
 
-                //$('#welcome-modal').modal('show');
-                                               
-                //var preBoards = [];
-                //preBoards[0] = 1191;
-                //preBoards[1] = 1192;
-                //localStorage["boards"] = JSON.stringify(preBoards);
-
-                //...
                 var boards = JSON.parse(localStorage["boards"]);
-                
-                //boards[0] = value;
-                //boards[1] = 1192;
-
+               
                 for (i = 0; i < boards.length; i++)
                 {
-                    //console.log("here", boards[i]);
-
-                    if (boards[i] == null)
-                    {
-                        //console.log(boards[i]);
-                        //boards[i].remove();
-                    }
-                    else
-                    {
+                   
+                   
                         var url = "http://dev.sprintboards.com/share/getsharedsprintboard/" + boards[i];
 
                         //try {
@@ -617,36 +504,13 @@ alert("test");
 
 
                         });
-                    }
-
+                   
 
                     
 
                 }
 
-                //localStorage.RemoveItem("boards");
-
                
-
-                    //console.log("here", "here");
-
-                    
-
-                    //$.ajax({
-                    //    url: "http://dev.sprintboards.com/projects/getsprintboard/1191",
-                    //    dataType: 'json',
-                    //    async: false,
-                    //    success: function (data) {
-                    //        if (data.Ok) {
-                    //            console.log("here", "here");
-                    //            myModel.Boards.push(d.Board);
-                    //        }
-                    //        else {
-                    //            console.log("here", "here");
-                    //            var pc = myModel.pCount(); myModel.pCount(pc - 1); alert(d.Msg);
-                    //        }
-                    //    }
-                    //});
 
             } catch (err) {
                 alert("error" + err);

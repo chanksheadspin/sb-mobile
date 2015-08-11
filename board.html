@@ -410,11 +410,6 @@
 
     <script type="text/javascript">
 
-        //if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false) {
-        //    //alert("here");
-        //    currentUrl = window.location.href;
-        //}
-
         var opts = {
             lines: 17,
             length: 40,
@@ -430,39 +425,16 @@
         var spinnerRooski = new Spinner(opts);
         spinnerRooski.spin(document.getElementById('page-shell'));
 
-        //function GetParameterValues(param, currUrl) {
-        //    var url = currUrl.slice(currUrl.indexOf('?') + 1).split('&');
-        //    for (var i = 0; i < url.length; i++) {
-        //        var urlparam = url[i].split('=');
-        //        if (urlparam[0] == param) {
-        //            return urlparam[1];
-        //        }
-        //    }
-        //}
-
         jQuery(document).ready(function () {
             // initiate layout and plugins
             App.init();
 
-            //@{
-            //    string domain = System.Configuration.ConfigurationManager.AppSettings["domain"];
-            //    string rr = this.Request.QueryString["r"];
-            //    string url = domain + "share/GetSharedSprintboard/" + Model.ProjectConfigId.ToString() + "?r=" + rr;
-            //http://dev.sprintboards.com/share/getsharedsprintboard/1191
-
-            //      }
-
-            
-                      
-            
-                    
             try {
 
                 var viewModel = null;
 
                 var sbId = localStorage["currentboardid"];
-                alert("sbid: = " + sbId);
-
+                
                 var boards = [];
 
                 if (localStorage["boards"] != null) {
@@ -473,8 +445,7 @@
                 var isIn = false;
                 if (boards != null && boards.length > 0) {
                     for (i = 0; i < boards.length; i++) {
-                        //console.log("here", boards[i]);
-                        if (boards[i] == sbId) {
+                                                if (boards[i] == sbId) {
                             isIn = true;
                         }
 
