@@ -12,35 +12,29 @@
 
         function handleOpenURL(url) {
             setTimeout(function () {
-                alert("received url: " + url);
+                                alert("received url: " + url);
+                            }, 200);
 
-                currentUrl = url;
+            currentUrl = url;
 
-                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false) {
-                    alert("here");
-                    currentUrl = window.location.href;
-                }
-                else {
-                    //alert("oniphone" + currentUrl);
-                }
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false) {
+                alert("here");
+                currentUrl = window.location.href;
+            }
+            else {
+                //alert("oniphone" + currentUrl);
+            }
 
-                var sbId = GetParameterValues('sbid');
-                
+            var sbId = GetParameterValues('sbid');
 
+           if (currentUrl.indexOf("board.html") > -1)
+           {
+            
+            alert("redirecting to:" + sbId);
 
-                //if (currentUrl.indexOf("board.html") > -1)
-                //{
-                var sbId = GetParameterValues('sbid');
+            window.location = "board.html?sbid=" + sbId;
 
-                alert("redirecting to:" + sbId);
-
-                window.location = "board.html?sbid=" + sbId;
-
-                //}
-
-
-
-            }, 200);
+           }
         }
 
         
