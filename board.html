@@ -7,19 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
 
-    <script type="text/javascript">
-        var currentUrl = "";
-
-        function handleOpenURL(url) {
-            setTimeout(function () {
-                alert("received url: " + url);
-                currentUrl = url;
-
-
-            }, 200);
-        }
-
-    </script>
+   
    
     <meta charset="utf-8" />
     <title>Sprintboards</title>
@@ -422,10 +410,10 @@
 
     <script type="text/javascript">
 
-        if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false) {
-            //alert("here");
-            currentUrl = window.location.href;
-        }
+        //if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false) {
+        //    //alert("here");
+        //    currentUrl = window.location.href;
+        //}
 
         var opts = {
             lines: 17,
@@ -442,6 +430,16 @@
         var spinnerRooski = new Spinner(opts);
         spinnerRooski.spin(document.getElementById('page-shell'));
 
+        function GetParameterValues(param, currUrl) {
+            var url = currUrl.slice(currUrl.indexOf('?') + 1).split('&');
+            for (var i = 0; i < url.length; i++) {
+                var urlparam = url[i].split('=');
+                if (urlparam[0] == param) {
+                    return urlparam[1];
+                }
+            }
+        }
+
         jQuery(document).ready(function () {
             // initiate layout and plugins
             App.init();
@@ -454,49 +452,36 @@
 
             //      }
 
-            function GetParameterValues(param) {
-                var url = currentUrl.slice(currentUrl.indexOf('?') + 1).split('&');
-                for (var i = 0; i < url.length; i++) {
-                    var urlparam = url[i].split('=');
-                    if (urlparam[0] == param) {
-                        return urlparam[1];
-                    }
-                }
-            }
+            
                       
             
                     
             try {
+
                 var viewModel = null;
 
-                var sbId = GetParameterValues('sbid');
+                currentUrl = url;
+
+                var sbId = localStorage["currentboardid"];
                 alert("sbid: = " + sbId);
-                
+
                 var boards = [];
 
-                //if (localStorage["boards"] == null)
-                //{
-
-                //}
-
-                if (localStorage["boards"] != null)
-                {
+                if (localStorage["boards"] != null) {
                     boards = JSON.parse(localStorage["boards"]);
 
                 }
 
                 var isIn = false;
-                if (boards != null && boards.length > 0)
-                {
+                if (boards != null && boards.length > 0) {
                     for (i = 0; i < boards.length; i++) {
-                        console.log("here", boards[i]);
+                        //console.log("here", boards[i]);
                         if (boards[i] == sbId) {
                             isIn = true;
                         }
 
                     }
                 }
-                
 
                 if (isIn == false) {
                     boards.push(sbId);
@@ -509,10 +494,7 @@
                 }
 
                 console.log("localstorage", localStorage["boards"]);
-              
-
-                //alert(sbId);
-                                              
+                            
                 $.ajax({
                     url: "http://dev.sprintboards.com/share/getsharedsprintboard/" + sbId,
                     dataType: 'json',

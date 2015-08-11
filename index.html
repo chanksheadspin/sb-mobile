@@ -37,7 +37,8 @@
 
                 //alert("redirecting to:" + sbId);
 
-                window.location = "board.html?sbid=" + sbId;
+                localStorage["currentboardid"] = sbId;
+                window.location = "board.html";
 
             }
 
@@ -223,8 +224,8 @@
                                 <i data-bind="css: { 'icon-ok green': Status == 'On Track', 'icon-remove red': Status == 'Off Track', 'icon-warning-sign orange': Status == 'Warning', 'icon-trash': Status == 'Removed' }" class="icon-3x pull-left icon-border" style="margin: 10px;"></i>
                                 <div class="portfolio-text-info">
                                     <h4>
-                                        <!--<a data-bind="visible: $data.Status != 'Removed', text: $data.Name, attr:{ href:'#', onClick: 'OpenBoard(' + $data.ProjectConfigId + ')'}"></a>-->
-                                        <a data-bind="visible: $data.Status != 'Removed', text: $data.Name, attr:{ href:'board.html?sbid=' + $data.ProjectConfigId }"></a>
+                                        <a data-bind="visible: $data.Status != 'Removed', text: $data.Name, attr:{ href:'#', onClick: 'OpenBoard(' + $data.ProjectConfigId + ')'}"></a>
+                                        
                                         <span data-bind="visible: $data.Status == 'Removed', text: $data.Name"></span>
                                         <span data-bind="if: $data.IsShared && $data.HasDiffs" style='font-size:15px;'> has been updated in Asana</span>
                                     </h4>
