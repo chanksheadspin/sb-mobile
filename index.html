@@ -11,37 +11,15 @@
         var currentUrl = "";
 
         function handleOpenURL(url) {
-            //setTimeout(function () {
-            //                    alert("received url: " + url);
-            //                }, 200);
+            setTimeout(function () {
+                                alert("received url: " + url);
+                            }, 200);
 
             currentUrl = url;
-
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false) {
-                alert("here");
-                currentUrl = window.location.href;
-            }
-            else {
-                //alert("oniphone" + currentUrl);
-            }
-
-            var sbId = GetParameterValues('sbid');
-
-            alert(sbId);
-
-           if (currentUrl.indexOf("board.html") > -1)
-           {
-            
-            alert("redirecting to:" + sbId);
-
-            window.location = "board.html?sbid=" + sbId;
-
-           }
+                       
+            LoadIndex();
         }
 
-        
-
-        
     </script>
 
 
@@ -402,6 +380,27 @@
             // initiate layout and plugins
             App.init();
 
+
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false) {
+               
+                currentUrl = window.location.href;
+
+                LoadIndex();
+            }
+
+            function LoadIndex() {
+                var sbId = GetParameterValues('sbid');
+
+                alert(sbId);
+
+                if (sbId > 0) {
+
+                    alert("redirecting to:" + sbId);
+
+                    window.location = "board.html?sbid=" + sbId;
+
+                }
+            }
            
 
 
