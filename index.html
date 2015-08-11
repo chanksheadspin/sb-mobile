@@ -382,11 +382,16 @@
             // initiate layout and plugins
             App.init();
 
-            if (!currentUrl) {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) == false) {
+                alert("here");
                 currentUrl = window.location.href;
             }
+            
 
-            alert(currentUrl);
+            //if (!currentUrl) {
+            //    currentUrl = window.location.href;
+            //}
+
                 if (currentUrl.indexOf("board.html") > -1)
                 {
                     var sbId = GetParameterValues('sbid');
