@@ -9,7 +9,6 @@
 
     <script type="text/javascript">
 
-      
         function handleOpenURL(url) {
             setTimeout(function () {
                 var sbId = GetParameterValues('sbid', url);
@@ -25,10 +24,7 @@
 			
         }
 
-
-
     </script>
-
 
     <meta charset="utf-8" />
     <title>Sprintboards</title>
@@ -500,15 +496,17 @@
                             else {
 
                                 var pc = myModel.pCount(); myModel.pCount(pc - 1); alert(d.Msg);
+
+                                //if you cannot find the board, get it out of the array
+                                boards.splice(i, 1);
                             }
 
 
                         });
                    
-
-                    
-
                 }
+
+                localStorage["boards"] = JSON.stringify(boards);
 
                
 
