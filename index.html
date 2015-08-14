@@ -486,7 +486,7 @@
                 {
                     for (i = 0; i < boards.length; i++) {
 
-                        alert("boards" + boards[i]);
+                        //alert("boards" + boards[i]);
 
                         var url = "http://stage.sprintboards.com/share/getsharedsprintboard/" + boards[i];
 
@@ -499,10 +499,21 @@
                             }
                             else {
 
-                                var pc = myModel.pCount(); myModel.pCount(pc - 1); alert(d.Msg);
+                                var pc = myModel.pCount();
 
-                                //if you cannot find the board, get it out of the array
-                                boards.splice(i, 1);
+                                myModel.pCount(pc - 1);
+
+                                if (d == null)
+                                {
+                                    alert(d.Msg);
+                                } else if (d.Ok == false)
+                                {
+                                    //if you cannot find the board, get it out of the array
+                                    boards.splice(i, 1);
+                                }
+                                
+
+                                
                             }
 
 
