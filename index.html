@@ -479,11 +479,14 @@
                 ko.applyBindings(myModel);
 
                 var boards = JSON.parse(localStorage["boards"]);
+
+                alert("here");
                
                 if (boards != null)
                 {
                     for (i = 0; i < boards.length; i++) {
 
+                        alert("boards" + boards[i]);
 
                         var url = "http://dev.sprintboards.com/share/getsharedsprintboard/" + boards[i];
 
