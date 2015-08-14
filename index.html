@@ -483,7 +483,9 @@
                 if (boards != null)
                 {
 
-                    alert(boards.length());
+                    alert("boardslength" + boards.length());
+
+                    var removeBoards = [];
 
                     for (i = 0; i < boards.length; i++) {
 
@@ -509,38 +511,36 @@
                                     alert(d.Msg);
                                 } else if (d.Ok == false)
                                 {
+                                    removeBoards.push(i);
+
                                     //if you cannot find the board, get it out of the array
-                                    boards.splice(i, 1);
+                                   
                                 }
                                 
-
-                                
                             }
-
 
                         });
 
                     }
+
+                    if (removeBoardIds != null)
+                    {
+                        for (i = 0; i < removeBoards.length; i++) {
+                            boards.splice(removeBoard, 1);
+                        }
+                    }
+                   
                 }
 
-                
-
                 localStorage["boards"] = JSON.stringify(boards);
-
-               
 
             } catch (err) {
                 alert("error" + err);
             }
 
-
-
         });
 
     </script>
-
-
-
 
     <!--@RenderSection("scripts", false)-->
     <!-- END JAVASCRIPTS -->
