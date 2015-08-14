@@ -464,7 +464,7 @@
                 console.log("localstorage", localStorage["boards"]);
                             
                 $.ajax({
-                    url: "http://dev.sprintboards.com/share/getsharedsprintboard/" + sbId,
+                    url: "http://stage.sprintboards.com/share/getsharedsprintboard/" + sbId,
                     dataType: 'json',
                     async: false,
                     success: function (data) {
