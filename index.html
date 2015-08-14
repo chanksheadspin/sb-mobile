@@ -480,10 +480,11 @@
 
                 var boards = JSON.parse(localStorage["boards"]);
                
-                for (i = 0; i < boards.length; i++)
+                if (boards != null)
                 {
-                   
-                   
+                    for (i = 0; i < boards.length; i++) {
+
+
                         var url = "http://dev.sprintboards.com/share/getsharedsprintboard/" + boards[i];
 
                         //try {
@@ -503,8 +504,11 @@
 
 
                         });
-                   
+
+                    }
                 }
+
+                
 
                 localStorage["boards"] = JSON.stringify(boards);
 
