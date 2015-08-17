@@ -24,6 +24,9 @@
 			
         }
 
+     
+
+
     </script>
 
     <meta charset="utf-8" />
@@ -369,6 +372,25 @@
         jQuery(document).ready(function () {
             // initiate layout and plugins
             App.init();
+
+            var currentUrl = window.location.href;
+            //only to be used when testing on the desktop
+            var sbId = GetParameterValues('sbid', currentUrl);
+
+            if (sbId > 0) {
+
+                
+                localStorage["currentboardid"] = sbId;
+                window.location = "board.html";
+
+
+
+            }
+
+
+
+
+
 				
             try {
                 var projectsCount = 0;
@@ -483,39 +505,76 @@
                 if (boards != null)
                 {
 
-                    alert("boardslength" + boards.length);
+                    console.log(boards);
 
-                    var removeBoards = [];
+                    var goodBoards = [];
 
-                    for (i = 0; i < boards.length; i++) {
+                    for (var i = boards.length - 1; i >= 0 ; i--) {
 
                         //alert("boards" + boards[i]);
 
                         var url = "http://stage.sprintboards.com/share/getsharedsprintboard/" + boards[i];
 
+                       
+
+                        //if (!boards[i] || boards[i] == "undefined")
+                        //{
+                        //    removeBoards.push(boards[i]);
+                        //}
+                        
                         //try {
                         $.get(url, function (d) {
 
                             if (d.Ok) {
-                                //console.log(d.Board);
+                                console.log(d.Board);
                                 myModel.Boards.push(d.Board);
+
+                                goodBoards.push(d.Board.ProjectConfigId);
                             }
                             else {
-
+                                //console.log(d);
                                 var pc = myModel.pCount();
 
                                 myModel.pCount(pc - 1);
 
-                                if (d == null)
-                                {
-                                    alert(d.Msg);
-                                } else if (d.Ok == false)
-                                {
-                                    removeBoards.push(i);
+                                console.log("couldnotfind", id);
 
-                                    //if you cannot find the board, get it out of the array
-                                   
-                                }
+                                //if (d == null)
+                                //{
+                                //    alert(d.Msg);
+                                //} else
+
+                                //if (d.Ok == false)
+                                //{
+
+                                //    //alert("addingthistoremove" + boards[i])
+                                //    //removeBoards.push(boards[i]);
+
+                                //    //if you cannot find the board, get it out of the array
+                                //    //boards.splice(i, 1);
+
+                                //    var tmpBoards = JSON.parse(localStorage["boards"]);
+
+                                //    if (tmpBoards != null)
+                                //    {
+                                //        var index = tmpBoards.indexOf(id);
+
+                                //        console.log("boardsvalue", id);
+
+                                //        if (index > 0)
+                                //        {
+                                //            tmpBoards.splice(index, 1);
+
+                                //            console.log("tmpboards", tmpBoards);
+
+                                //            localStorage["boards"] = JSON.stringify(tmpBoards);
+                                //        }
+
+
+                                //    }
+
+
+                                //}
                                 
                             }
 
@@ -523,19 +582,29 @@
 
                     }
 
-                    if (removeBoards != null)
+                    if (goodBoards != null && goodBoards.length > 0)
                     {
-                        for (i = 0; i < removeBoards.length; i++) {
-                            boards.splice(removeBoards[i], 1);
-                            alert("removeboardatindex" + removeBoards[i]);
-                        }
+                        localStorage["boards"] = JSON.stringify(boards);
+
                     }
+
+                    //if (removeBoards != null)
+                    //{
+                    //    console.log("here1");
+                    //    for (i = 0; i < removeBoards.length; i++) {
+
+                    //        var index = boards.indexOf(removeBoards[i]);
+                    //        boards.splice(index, 1);
+                    //        alert("removeboardatindex" + index);
+                    //    }
+                    //}
                    
                 }
+                //alert("removeBoardslength" + removeBoards.length);
+                //alert("boardslengthafter" + boards.length);
+                //console.log("boardsrightbeforesave", boards);
 
-                alert("boardslengthafter" + boards.length);
-
-                localStorage["boards"] = JSON.stringify(boards);
+                //localStorage["boards"] = JSON.stringify(boards);
 
             } catch (err) {
                 alert("error" + err);
