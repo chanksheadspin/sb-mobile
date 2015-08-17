@@ -498,21 +498,52 @@
 
                         var url = "http://stage.sprintboards.com/share/getsharedsprintboard/" + boards[i];
 
-                        $.get(url, function (d) {
+                        //$.get(url, function (d) {
 
-                            if (d.Ok) {
-                                console.log(d.Board);
-                                myModel.Boards.push(d.Board);
+                        //    if (d.Ok) {
+                        //        console.log(d.Board);
+                        //        myModel.Boards.push(d.Board);
 
+                        //    }
+                        //    else {
+                        //        //console.log(d);
+                        //        var pc = myModel.pCount();
+
+                        //        myModel.pCount(pc - 1);
+
+                        //    }
+
+                        //});
+
+
+                        $.ajax({
+                            url: url,
+                            dataType: 'json',
+                            async: false,
+                            success: function (data) {
+                                if (data.Ok) {
+                                    console.log(d.Board);
+                                    myModel.Boards.push(d.Board);
+
+                                }
+                                else {
+                                    var pc = myModel.pCount();
+
+                                    myModel.pCount(pc - 1);
+
+                                    var tmpBoards = JSON.parse(localStorage["boards"]);
+
+                                    if (tmpBoards != null)
+                                    {
+                                        var index = tmpBoards.indexOf(boards[i]);
+
+                                        tmpBoards.slice(index, 1);
+
+                                        localStorage["boards"] = JSON.stringify(tmpBoards);
+                                    }
+
+                                }
                             }
-                            else {
-                                //console.log(d);
-                                var pc = myModel.pCount();
-
-                                myModel.pCount(pc - 1);
-
-                            }
-
                         });
 
                     }
