@@ -24,9 +24,6 @@
 			
         }
 
-     
-
-
     </script>
 
     <meta charset="utf-8" />
@@ -368,30 +365,21 @@
             }
         }
 
-        
         jQuery(document).ready(function () {
             // initiate layout and plugins
             App.init();
 
-            var currentUrl = window.location.href;
-            //only to be used when testing on the desktop
-            var sbId = GetParameterValues('sbid', currentUrl);
+            //var currentUrl = window.location.href;
+            ////only to be used when testing on the desktop
+            //var sbId = GetParameterValues('sbid', currentUrl);
 
-            if (sbId > 0) {
+            //if (sbId > 0) {
 
-                
-                localStorage["currentboardid"] = sbId;
-                window.location = "board.html";
+            //    localStorage["currentboardid"] = sbId;
+            //    window.location = "board.html";
 
+            //}
 
-
-            }
-
-
-
-
-
-				
             try {
                 var projectsCount = 0;
 
@@ -422,13 +410,11 @@
                         self.Boards.remove(b);
                     };
 
-
                     self.PublishBoard = function (b) {
                         if (confirm("Are you sure you want to Publish this Sprintboard?")) {
                             document.forms['shareme-' + b.ProjectConfigId].submit();
                         }
                     };
-
 
                     self.UnpublishBoard = function (b) {
                         if (confirm("Are you sure you want to Unpublish this Sprintboard?")) {
@@ -505,31 +491,18 @@
                 if (boards != null)
                 {
 
-                    console.log(boards);
-
-                    var goodBoards = [];
+                    console.log("boards", boards);
 
                     for (var i = boards.length - 1; i >= 0 ; i--) {
 
-                        //alert("boards" + boards[i]);
-
                         var url = "http://stage.sprintboards.com/share/getsharedsprintboard/" + boards[i];
 
-                       
-
-                        //if (!boards[i] || boards[i] == "undefined")
-                        //{
-                        //    removeBoards.push(boards[i]);
-                        //}
-                        
-                        //try {
                         $.get(url, function (d) {
 
                             if (d.Ok) {
                                 console.log(d.Board);
                                 myModel.Boards.push(d.Board);
 
-                                goodBoards.push(d.Board.ProjectConfigId);
                             }
                             else {
                                 //console.log(d);
@@ -537,75 +510,14 @@
 
                                 myModel.pCount(pc - 1);
 
-                                console.log("couldnotfind", id);
-
-                                //if (d == null)
-                                //{
-                                //    alert(d.Msg);
-                                //} else
-
-                                //if (d.Ok == false)
-                                //{
-
-                                //    //alert("addingthistoremove" + boards[i])
-                                //    //removeBoards.push(boards[i]);
-
-                                //    //if you cannot find the board, get it out of the array
-                                //    //boards.splice(i, 1);
-
-                                //    var tmpBoards = JSON.parse(localStorage["boards"]);
-
-                                //    if (tmpBoards != null)
-                                //    {
-                                //        var index = tmpBoards.indexOf(id);
-
-                                //        console.log("boardsvalue", id);
-
-                                //        if (index > 0)
-                                //        {
-                                //            tmpBoards.splice(index, 1);
-
-                                //            console.log("tmpboards", tmpBoards);
-
-                                //            localStorage["boards"] = JSON.stringify(tmpBoards);
-                                //        }
-
-
-                                //    }
-
-
-                                //}
-                                
                             }
 
                         });
 
                     }
 
-                    if (goodBoards != null && goodBoards.length > 0)
-                    {
-                        localStorage["boards"] = JSON.stringify(boards);
-
-                    }
-
-                    //if (removeBoards != null)
-                    //{
-                    //    console.log("here1");
-                    //    for (i = 0; i < removeBoards.length; i++) {
-
-                    //        var index = boards.indexOf(removeBoards[i]);
-                    //        boards.splice(index, 1);
-                    //        alert("removeboardatindex" + index);
-                    //    }
-                    //}
-                   
                 }
-                //alert("removeBoardslength" + removeBoards.length);
-                //alert("boardslengthafter" + boards.length);
-                //console.log("boardsrightbeforesave", boards);
-
-                //localStorage["boards"] = JSON.stringify(boards);
-
+                
             } catch (err) {
                 alert("error" + err);
             }

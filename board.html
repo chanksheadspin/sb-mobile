@@ -429,6 +429,10 @@
             // initiate layout and plugins
             App.init();
 
+            //var killBoards = [];
+            //localStorage["boards"] = JSON.stringify(killBoards);
+
+
             try {
 
                 var viewModel = null;
@@ -452,7 +456,7 @@
                 }
 
                 if (isIn == false) {
-                    boards.push(sbId);
+                    boards.push(parseInt(sbId));
                 }
 
                 localStorage["boards"] = JSON.stringify(boards);
