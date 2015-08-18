@@ -82,6 +82,6 @@
     <param name="URL_SCHEME" value="sprintboards" />
   </gap:plugin>
   <gap:plugin name="com.phonegap.plugins.pushplugin" />
-  <gap:plugin name="org.apache.cordova.console" version="0.1.0" />
+  <gap:plugin name="org.apache.cordova.console" version="0.2.11" />
   
 </widget>
