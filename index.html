@@ -526,10 +526,13 @@
 
                 ko.applyBindings(myModel);
 
-                var boards = JSON.parse(localStorage["boards"]);
+                var boards = [];
 
-                alert(boards.length);
-               
+                if (localStorage["boards"] != null)
+                {
+                    boards = JSON.parse(localStorage["boards"]);
+                }
+
                 if (boards != null && boards.length > 0)
                 {
 
