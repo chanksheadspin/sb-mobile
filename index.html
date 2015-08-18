@@ -384,38 +384,38 @@
             //}
 
 
-            var pushNotification;
+            //var pushNotification;
 
-            document.addEventListener("deviceready", function () {
-                pushNotification = window.plugins.pushNotification;
-                //alert("deviceready, registring pushNotifications");
+            //document.addEventListener("deviceready", function () {
+            //    pushNotification = window.plugins.pushNotification;
+            //    //alert("deviceready, registring pushNotifications");
 
-                pushNotification.register(
-                tokenHandler,
-                errorHandler,
-                {
-                    "badge": "true",
-                    "sound": "true",
-                    "alert": "true",
-                    "ecb": "onNotificationAPN"
-                });
-            });
-
-
-
-            function tokenHandler(result) {
-                // Your iOS push server needs to know the token before it can push to this device
-                // here is where you might want to send it the token for later use.
-                alert('device token = ' + result);
-            }
+            //    pushNotification.register(
+            //    tokenHandler,
+            //    errorHandler,
+            //    {
+            //        "badge": "true",
+            //        "sound": "true",
+            //        "alert": "true",
+            //        "ecb": "onNotificationAPN"
+            //    });
+            //});
 
 
 
-            function errorHandler(error) {
-                // Your iOS push server needs to know the token before it can push to this device
-                // here is where you might want to send it the token for later use.
-                alert('error = ' + error);
-            }
+            //function tokenHandler(result) {
+            //    // Your iOS push server needs to know the token before it can push to this device
+            //    // here is where you might want to send it the token for later use.
+            //    alert('device token = ' + result);
+            //}
+
+
+
+            //function errorHandler(error) {
+            //    // Your iOS push server needs to know the token before it can push to this device
+            //    // here is where you might want to send it the token for later use.
+            //    alert('error = ' + error);
+            //}
 
 
 
@@ -531,7 +531,7 @@
                 if (boards != null)
                 {
 
-                    console.log("boards", boards);
+                    //console.log("boards", boards);
 
                     for (var i = boards.length - 1; i >= 0 ; i--) {
 
@@ -561,7 +561,7 @@
                             async: false,
                             success: function (data) {
                                 if (data.Ok) {
-                                    console.log("board" + data.Board);
+                                    //console.log("board" + data.Board);
                                     myModel.Boards.push(data.Board);
 
                                 }
@@ -572,7 +572,7 @@
 
                                     var tmpBoards = JSON.parse(localStorage["boards"]);
 
-                                    if (tmpBoards != null)
+                                    if (tmpBoards != null && tmpBoards.length > 0)
                                     {
                                         var index = tmpBoards.indexOf(boards[i].toString());
 
@@ -580,7 +580,7 @@
                                            
                                         localStorage["boards"] = JSON.stringify(tmpBoards);
 
-                                        console.log("couldnotfindboardtakingitout", tmpBoards);
+                                        //console.log("couldnotfindboardtakingitout", tmpBoards);
                                     }
 
                                 }
@@ -589,7 +589,7 @@
                                                 
                     }
 
-                    console.log("here", "endoffor");
+                    //console.log("here", "endoffor");
 
                 }
                 
