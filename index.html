@@ -522,8 +522,8 @@
                             async: false,
                             success: function (data) {
                                 if (data.Ok) {
-                                    console.log(d.Board);
-                                    myModel.Boards.push(d.Board);
+                                    console.log("board" + data.Board);
+                                    myModel.Boards.push(data.Board);
 
                                 }
                                 else {
@@ -535,18 +535,22 @@
 
                                     if (tmpBoards != null)
                                     {
-                                        var index = tmpBoards.indexOf(boards[i]);
+                                        var index = tmpBoards.indexOf(boards[i].toString());
 
-                                        tmpBoards.slice(index, 1);
-
+                                        tmpBoards.splice(index, 1);
+                                           
                                         localStorage["boards"] = JSON.stringify(tmpBoards);
+
+                                        console.log("couldnotfindboardtakingitout", tmpBoards);
                                     }
 
                                 }
                             }
                         });
-
+                                                
                     }
+
+                    console.log("here", "endoffor");
 
                 }
                 
