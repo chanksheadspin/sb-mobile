@@ -527,6 +527,8 @@
                 ko.applyBindings(myModel);
 
                 var boards = JSON.parse(localStorage["boards"]);
+
+                alert(boards.length);
                
                 if (boards != null && boards.length > 0)
                 {
@@ -553,6 +555,8 @@
                         //    }
 
                         //});
+
+                        alert(url);
 
 
                         $.ajax({
