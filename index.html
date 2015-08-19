@@ -9,34 +9,53 @@
 
     <script type="text/javascript">
 
+        function ShowWelcome() {
+            $(".welcome").removeClass("hide");
+            $(".boardlist").addClass("hide");
+            localStorage.setItem("hasseenapp", true);
+        }
+
+        function HideWelcome() {
+            $(".welcome").addClass("hide");
+            $(".boardlist").removeClass("hide");
+        }
+
+        function ShowNoBoards() {
+            $(".noboards").removeClass("hide");
+            $(".boardlist").addClass("hide");
+            //localStorage.setItem("hasseenapp", true);
+        }
+
+        function HideNoBoards() {
+            $(".noboards").addClass("hide");
+            $(".boardlist").removeClass("hide");
+        }
+
         function OnIndexLoad() {
 
-            alert("onindexload");
+            //alert("onindexload");
 
             //localStorage.clear();
 
             var firstTime = localStorage["hasseenapp"];
 
             if (firstTime == null || firstTime == false) {
-                window.location = "welcome.html";
+                ShowWelcome();
             }
             else {
-               
+
                 if (!localStorage["currentboardid"] && localStorage["currentboardid"] > 0) {
                     OpenCurrentBoard(localStorage("currentboardid"));
                 }
                 else {
-
-
                     var boards = localStorage.getItem('boards');
-                    
-                    if (typeof boards == 'undefined' || boards == null || boards.length < 1)
-                    {
+
+                    if (typeof boards == 'undefined' || boards == null || boards.length < 1) {
                         alert("innoboards");
 
-                                                window.location = "noboards.html";
+                        ShowNoBoards();
                     }
-                                    }
+                }
             }
         }
 
@@ -54,12 +73,12 @@
 
                 var sbId = GetParameterValues('sbid', url);
                 OpenCurrentBoard(sbId);
+
+                OnIndexLoad();
                 
             }, 200);
 
         }
-
-
 
     </script>
 
@@ -118,7 +137,41 @@
 
     </div>
 
-    <div class="page-container" style="padding-top: 60px !important;">
+    <div class="welcome hide">
+        Preview page.
+
+        Welcome to the Sprintboards App!
+
+        <h3>1. The index page</h3>
+
+        <p class="lead">The home for all of your pinned Sprintboards!</p>
+
+        <p>
+            Here you can see all of the sprintboards you have pinned press on the boards to open it in the Sprintboards viewer.
+        </p>
+
+        <p>
+            Remove a board from your pinned list by pressing remove.
+        </p>
+
+        <a href="index.html" class="btn">Thank you, Let me go to App</a>
+
+
+    </div>
+
+
+    <div class="noboards hide">
+        <h3>No Boards!</h3>
+
+
+        <p class="lead">
+            You have no boards added, here how to add one!
+        </p>
+
+
+    </div>
+
+    <div class="page-container boardlist" style="padding-top: 60px !important;">
 
         <div class="page-content pt30" id="page-shell">
 
