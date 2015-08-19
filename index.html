@@ -367,58 +367,63 @@
             }
         }
 
-        document.addEventListener("deviceready", OnDeviceReady, false);
+        //document.addEventListener("deviceready", OnDeviceReady, false);
 
-        function onDeviceReady() {
+        //function onDeviceReady() {
+        //    alert("onDeviceReady");
+        //}
+
+
+        document.addEventListener("deviceready", function () {
             alert("onDeviceReady");
-        }
+        }, true);
 
-        var pushNotification;
+        //var pushNotification;
 
-        document.addEventListener("deviceready", function(){
-            pushNotification = window.plugins.pushNotification;
-            alert("deviceready, registring pushNotifications");
+        //document.addEventListener("deviceready", function(){
+        //    pushNotification = window.plugins.pushNotification;
+        //    alert("deviceready, registring pushNotifications");
 
-            pushNotification.register(
-            tokenHandler,
-            errorHandler,
-            {
-                "badge": "true",
-                "sound": "true",
-                "alert": "true",
-                "ecb": "onNotificationAPN"
-            });
+        //    pushNotification.register(
+        //    tokenHandler,
+        //    errorHandler,
+        //    {
+        //        "badge": "true",
+        //        "sound": "true",
+        //        "alert": "true",
+        //        "ecb": "onNotificationAPN"
+        //    });
 
-        });
+        //});
 
-        function onNotificationAPN(event) {
-            if (event.alert) {
-                navigator.notification.alert(event.alert);
-            }
+        //function onNotificationAPN(event) {
+        //    if (event.alert) {
+        //        navigator.notification.alert(event.alert);
+        //    }
 
-            if (event.sound) {
-                var snd = new Media(event.sound);
-                snd.play();
-            }
+        //    if (event.sound) {
+        //        var snd = new Media(event.sound);
+        //        snd.play();
+        //    }
 
-            if (event.badge) {
-                pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
-            }
-        }
+        //    if (event.badge) {
+        //        pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
+        //    }
+        //}
       
-        function tokenHandler(result) {
-            // Your iOS push server needs to know the token before it can push to this device
-            // here is where you might want to send it the token for later use.
-            alert('device token = ' + result);
-        }
+        //function tokenHandler(result) {
+        //    // Your iOS push server needs to know the token before it can push to this device
+        //    // here is where you might want to send it the token for later use.
+        //    alert('device token = ' + result);
+        //}
 
 
 
-        function errorHandler(error) {
-            // Your iOS push server needs to know the token before it can push to this device
-            // here is where you might want to send it the token for later use.
-            alert('error = ' + error);
-        }
+        //function errorHandler(error) {
+        //    // Your iOS push server needs to know the token before it can push to this device
+        //    // here is where you might want to send it the token for later use.
+        //    alert('error = ' + error);
+        //}
 
         
         jQuery(document).ready(function () {
