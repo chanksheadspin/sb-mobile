@@ -27,12 +27,13 @@
                 }
                 else {
 
-                    alert("innoboards");
 
                     var boards = localStorage.getItem('boards');
-
+                    
                     if (typeof boards == 'undefined' || boards == null || boards.length < 1)
                     {
+                        alert("innoboards");
+
                                                 window.location = "noboards.html";
                     }
                                     }
