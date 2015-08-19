@@ -22,7 +22,8 @@
                 else {
                     var boards = JSON.parse(localStorage["boards"]);
 
-                    if (boards == null && boards.length < 1) {
+                    if (boards == null || boards.length < 1) {
+                        alert("noboards");
                         window.location = "noboards.html";
                     }
                 }
