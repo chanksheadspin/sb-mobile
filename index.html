@@ -9,6 +9,13 @@
 
     <script type="text/javascript">
 
+
+        function onDeviceReady() {
+            alert("onDeviceReady");
+        }
+
+        document.addEventListener('deviceready', onDeviceReady, true);
+
         function handleOpenURL(url) {
             setTimeout(function () {
                 var sbId = GetParameterValues('sbid', url);
@@ -24,9 +31,7 @@
 			
         }
 
-        document.addEventListener("deviceready", function () {
-            alert("onDeviceReady");
-        }, true);
+        
 
     </script>
 
@@ -373,9 +378,7 @@
 
         //document.addEventListener("deviceready", OnDeviceReady, false);
 
-        //function onDeviceReady() {
-        //    alert("onDeviceReady");
-        //}
+       
 
 
         
