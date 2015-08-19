@@ -1,0 +1,199 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+
+    <meta charset="utf-8" />
+    <title>Sprintboards</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="HeadSpin" name="author" />
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+    <link href="plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/style-metro.css" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link href="css/style-responsive.css" rel="stylesheet" type="text/css" />
+    <link href="css/themes/default.css" rel="stylesheet" type="text/css" id="style_color" />
+    <link href="plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+    <link href="css/custom.css" rel="stylesheet" type="text/css" />
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+
+    <link rel="shortcut icon" href="http://sprintboards.com/favicon.ico" />
+    <link rel="apple-touch-icon" href="http://sprintboards.com/img/apple-touch-icon.png">
+    <link rel="image_src" href="http://sprintboards.com/img/apple-touch-icon.png">
+
+
+
+</head>
+
+<body class="page-header-fixed page-full-width" id="sbmobilebody" style="background-color: #ffffff !important;">
+
+   
+    <!--<div class="header navbar navbar-inverse navbar-fixed-top" style="margin-top: 20px !important; position: fixed;">-->
+
+    <div class="header navbar navbar-inverse navbar-fixed-top" style="position: fixed;">
+
+
+        <div style="height: 20px; background-color: #ffffff;"></div>
+
+
+        <div class="navbar-inner">
+            <div class="container-fluid">
+                
+                <a class="brand" href="index.html">
+                    <img src="img/sblogosm.png" alt="Sprintboards logo" />
+                </a>
+
+                <!--<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+                    <img src="img/menu-toggler.png" alt="" />
+                </a>-->
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="page-container" style="padding-top: 60px !important;">
+
+        <div class="page-content pt30" id="page-shell">
+
+            <div class="row-fluid">
+                <div class="span4 responsive" data-tablet="span4" data-desktop="span4">
+                    
+                    Preview page.
+
+                    Welcome to the Sprintboards App!
+
+
+
+
+                </div>
+                
+
+
+            </div>
+            
+
+
+
+           
+        </div>
+        <!-- END PAGE -->
+        <!--@{
+        string shareurl = domain + "projects/share/" + Model.ProjectConfigId.ToString();
+        string unlinkurl = domain + "projects/unlink/" + Model.ProjectConfigId.ToString();
+        string unshareurl = domain + "projects/removeshare/" + Model.ProjectConfigId.ToString();
+        http://dev.sprintboards.com/projects/share/1191
+        http://dev.sprintboards.com/projects/unlink/1191
+        http://dev.sprintboards.com/projects/removeshare//1191
+        }-->
+
+        <form action='http://dev.sprintboards.com/share/1191' id="share-form" method='post'></form>
+        <form action='http://dev.sprintboards.com/projects/unlink/1191' id="unlink-form" method='post'></form>
+        <form action='http://dev.sprintboards.com/projects/removeshare//1191' id="unshare-form" method='post'></form>
+
+
+    </div>
+
+
+    <!-- END CONTAINER -->
+    <!--End DaBoard Partial-->
+    <!--@section scripts{-->
+    <!--End ShareBoard Partial-->
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+        <div class="footer-inner">
+            Today &copy; Sprintboards
+        </div>
+        <div class="footer-tools">
+            <span class="go-top">
+                <i class="icon-angle-up"></i>
+            </span>
+        </div>
+    </div>
+    <!-- END FOOTER -->
+    <!-- BEGIN CORE PLUGINS -->
+    <script src="plugins/jquery-1.10.1.min.js" type="text/javascript"></script>
+    <script src="plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+    <!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+    <script src="plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="/lib2/metro/assets/plugins/excanvas.min.js"></script>
+    <script src="/lib2/metro/assets/plugins/respond.min.js"></script>
+    <![endif]-->
+    <script src="plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+    <script src="plugins/jquery.blockui.min.js" type="text/javascript"></script>
+    <script src="plugins/jquery.cookie.min.js" type="text/javascript"></script>
+    <script src="plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
+    <script src="scripts/app.js" type="text/javascript"></script>
+
+    <script src="scripts/knockout-2.3.0.js" type="text/javascript"></script>
+    <script src="scripts/knockout.mapping.2.4.1.js" type="text/javascript"></script>
+
+    <script src="scripts/spin.min.js" type="text/javascript"></script>
+    <script src="scripts/moment.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="PushNotification.js"></script>
+    <!--<script type="text/javascript" src="scripts/push.js"></script>-->
+
+    <!-- END CORE PLUGINS -->
+
+
+    <script type="text/javascript">
+
+
+        
+
+
+        function OpenBoard(id)
+        {
+          
+            localStorage.setItem("currentboardid", id);
+
+            window.location = "board.html";
+        }
+
+        function GetParameterValues(param, currUrl) {
+            var url = currUrl.slice(currUrl.indexOf('?') + 1).split('&');
+            for (var i = 0; i < url.length; i++) {
+                var urlparam = url[i].split('=');
+                if (urlparam[0] == param) {
+                    return urlparam[1];
+                }
+            }
+        }
+
+        
+        
+        jQuery(document).ready(function () {
+            // initiate layout and plugins
+            App.init();
+
+
+            localStorage["hasseenapp"] = true;
+
+
+
+
+
+            
+        });
+
+    </script>
+
+    <!--@RenderSection("scripts", false)-->
+    <!-- END JAVASCRIPTS -->
+</body>
+
+<!-- END BODY -->
+</html>

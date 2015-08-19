@@ -9,8 +9,21 @@
 
     <script type="text/javascript">
 
+
+        function CheckFirstTime() {
+            var firstTime = localStorage["hasseenapp"];
+
+            if (firstTime == null)
+            {
+                window.location = "preview.html";
+            }
+        }
+
         function handleOpenURL(url) {
             setTimeout(function () {
+
+                CheckFirstTime();
+
                 var sbId = GetParameterValues('sbid', url);
 
                 if (sbId > 0) {
@@ -420,6 +433,9 @@
         jQuery(document).ready(function () {
             // initiate layout and plugins
             App.init();
+
+
+            CheckFirstTime();
 
             //var currentUrl = window.location.href;
             ////only to be used when testing on the desktop
