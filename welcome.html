@@ -67,11 +67,23 @@
         <div class="page-content pt30" id="page-shell">
 
             <div class="row-fluid">
-                <div class="span4 responsive" data-tablet="span4" data-desktop="span4">
+                <div class="span12 responsive" data-tablet="span12" data-desktop="span12">
                     
                     Preview page.
 
                     Welcome to the Sprintboards App!
+                    
+                        <h3>1. The index page</h3>
+
+                  <p class="lead">The home for all of your pinned Sprintboards!</p>
+
+                    <p>
+                        Here you can see all of the sprintboards you have pinned press on the boards to open it in the Sprintboards viewer.
+                    </p>
+
+                    <p>
+                        Remove a board from your pinned list by pressing remove.
+                    </p>
 
                     <a href="index.html" class="btn">Thank you, Let me go to App</a>
 
@@ -151,13 +163,8 @@
 
     <script type="text/javascript">
 
-
-        
-
-
         function OpenBoard(id)
         {
-          
             localStorage.setItem("currentboardid", id);
 
             window.location = "board.html";
@@ -173,15 +180,13 @@
             }
         }
 
-        
-        
         jQuery(document).ready(function () {
             // initiate layout and plugins
             App.init();
 
-            localStorage["hasseenapp"] = true;
+            localStorage.setItem("hasseenapp", true);
 
-        });
+                    });
 
     </script>
 

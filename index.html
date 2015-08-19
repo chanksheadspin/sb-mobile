@@ -10,28 +10,36 @@
     <script type="text/javascript">
 
         function OnIndexLoad() {
+
+            //localStorage.clear();
+
             var firstTime = localStorage["hasseenapp"];
 
             if (firstTime == null || firstTime == false) {
-                window.location = "preview.html";
+                window.location = "welcome.html";
             }
             else {
-                if (localStorage["currentboardid"] != null && localStorage["currentboardid"] > 0) {
+               
+                if (!localStorage["currentboardid"] && localStorage["currentboardid"] > 0) {
                     OpenCurrentBoard(localStorage("currentboardid"));
                 }
                 else {
-                    var boards = JSON.parse(localStorage["boards"]);
 
-                    if (boards == null || boards.length < 1) {
-                        alert("noboards");
-                        window.location = "noboards.html";
+                    var boards = localStorage.getItem('boards');
+
+                    if (typeof boards == 'undefined' || boards == null || boards.length < 1)
+                    {
+                                                window.location = "noboards.html";
                     }
+                    
+                    
                 }
             }
         }
 
         function OpenCurrentBoard(id) {
             if (id > 0) {
+                localStorage["currentboardid"] = id;
                 window.location = "board.html";
             }
         }
@@ -40,7 +48,7 @@
             setTimeout(function () {
 
                 var sbId = GetParameterValues('sbid', url);
-                localStorage["currentboardid"] = sbId;
+                
 
                 OnIndexLoad();
 
