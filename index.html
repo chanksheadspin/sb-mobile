@@ -48,16 +48,27 @@
 
 
                 if (!localStorage["currentboardid"] && localStorage["currentboardid"] > 0) {
+
+                    alert("here3");
+
+
                     OpenCurrentBoard(localStorage("currentboardid"));
                 }
                 else if (typeof boards == 'undefined' || boards == null || boards.length < 1) {
                     
+                    alert("here");
 
-                        ShowNoBoards();
+                    ShowNoBoards();
+                    HideWelcome();
                   
                 }
                 else
                 {
+
+
+                    alert("here2");
+
+
                     HideWelcome();
                     HideNoBoards();
                 }
