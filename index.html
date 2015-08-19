@@ -137,241 +137,249 @@
 
     </div>
 
-    <div class="welcome hide">
-        Preview page.
+    
 
-        Welcome to the Sprintboards App!
-
-        <h3>1. The index page</h3>
-
-        <p class="lead">The home for all of your pinned Sprintboards!</p>
-
-        <p>
-            Here you can see all of the sprintboards you have pinned press on the boards to open it in the Sprintboards viewer.
-        </p>
-
-        <p>
-            Remove a board from your pinned list by pressing remove.
-        </p>
-
-        <a href="index.html" class="btn">Thank you, Let me go to App</a>
-
-
-    </div>
-
-
-    <div class="noboards hide">
-        <h3>No Boards!</h3>
-
-
-        <p class="lead">
-            You have no boards added, here how to add one!
-        </p>
-
-
-    </div>
-
-    <div class="page-container boardlist" style="padding-top: 60px !important;">
+    <div class="page-container" style="padding-top: 60px !important;">
 
         <div class="page-content pt30" id="page-shell">
 
-            <div class="row-fluid">
-                <div class="span4 responsive" data-tablet="span4" data-desktop="span4">
-                    <div class="dashboard-stat blue">
-                        <div class="visual">
-                            <i class="icon-medkit"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number">
-                                <span data-bind="text: ProjectsOnTrack">0</span> of <span data-bind="text: ProjectsTotal">0</span>
-                            </div>
-                            <div class="desc">
-                                Projects On Track
-                            </div>
-                        </div>
-                        <span class="more">The health of your Sprintboards projects</span>
-                    </div>
-                </div>
-                <div class="span4 responsive" data-tablet="span4" data-desktop="span4">
-                    <div class="dashboard-stat yellow">
-                        <div class="visual">
-                            <i class="icon-flag"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number" data-bind="text: MilestonesTodo">
-                                0
-                            </div>
-                            <div class="desc">
-                                Milestones To Do
-                            </div>
-                        </div>
-                        <span class="more">How many milestones are there to complete</span>
-                    </div>
-                </div>
-                <div class="span4 responsive" data-tablet="span4" data-desktop="span4">
-                    <div class="dashboard-stat green">
-                        <div class="visual">
-                            <i class="icon-comments"></i>
-                        </div>
-                        <div class="details">
-                            <div class="number" data-bind="text: DiscussionsTodo">
-                                0
-                            </div>
-                            <div class="desc">
-                                Discussion Items
-                            </div>
-                        </div>
-                        <span class="more">Issues, Risks, Next Steps, Questions, Etc</span>
-                    </div>
-                </div>
+            <div class="welcome hide">
+                Preview page.
+
+                Welcome to the Sprintboards App!
+
+                <h3>1. The index page</h3>
+
+                <p class="lead">The home for all of your pinned Sprintboards!</p>
+
+                <p>
+                    Here you can see all of the sprintboards you have pinned press on the boards to open it in the Sprintboards viewer.
+                </p>
+
+                <p>
+                    Remove a board from your pinned list by pressing remove.
+                </p>
+
+                <a href="index.html" class="btn">Thank you, Let me go to App</a>
 
 
             </div>
 
 
+            <div class="noboards hide">
+                <h3>No Boards!</h3>
 
 
-            <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-            <div id="email-config" class="modal hide" data-keyboard="false" data-backdrop="static">
-                <div class="modal-header">
-                    <button data-dismiss="modal" class="close" type="button"></button>
-                    <h3>Share this Sprintboard</h3>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-info">
-                        <strong class="big" style="padding:0px;">Copy & Paste:</strong><br />
+                <p class="lead">
+                    You have no boards added, here how to add one!
+                </p>
 
-                        <input type="text" id="theurl" style="width:450px;" class="" style="background-color:White;" value="http://dev.sprintboards.com/share/53e8b2bd-8bdc-43dd-ac92-81369936867e" />
 
-                    </div>
-
-                    <div class="control-group">
-
-                        <div class="controls">
-
-                            <a href="http://dev.sprintboards.com/share/53e8b2bd-8bdc-43dd-ac92-81369936867e" target="_blank" class="big">Copy this link to the Sprintboard</a>
-
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button class="btn" data-dismiss="modal" type="button">OK</button>
-
-                </div>
             </div>
 
-
-
-            <!-- BEGIN PAGE CONTAINER-->
-            <div class="container-fluid" id="page-itself" style="">
-
+            <div class="boardlist">
                 <div class="row-fluid">
-
-                    <!-- END DASHBOARD STATS -->
-                    <div class="clearfix"></div>
-
-                    <!-- Start Add Project Row -->
-                    <div class="row-fluid add-portfolio">
-                        <div class="pull-left">
-
-                            <span data-bind="if: AllLoaded() == false"><span>Fetching </span><span data-bind="text: ProjectsToLoad"></span><span> sprintboards...</span></span>
-
-                        </div>
-
-                    </div>
-                    <!-- End Add Project Row -->
-
-                    <div class="board-row" data-bind="foreach: Boards">
-                        <form data-bind="attr:{action: '/projects/share/' + $data.ProjectConfigId, id: 'shareme-' + $data.ProjectConfigId}" method='post'></form>
-                        <form data-bind="if: $data.IsShared, attr:{action: '/projects/removeshare/' + $data.ProjectConfigId, id: 'unshareme-' + $data.ProjectConfigId}" method='post'></form>
-                        <div class="row-fluid portfolio-block">
-                            <div class="span9 portfolio-text">
-                                <i data-bind="css: { 'icon-ok green': Status == 'On Track', 'icon-remove red': Status == 'Off Track', 'icon-warning-sign orange': Status == 'Warning', 'icon-trash': Status == 'Removed' }" class="icon-3x pull-left icon-border" style="margin: 10px;"></i>
-                                <div class="portfolio-text-info">
-                                    <h4>
-                                        <a data-bind="visible: $data.Status != 'Removed', text: $data.Name, attr:{ href:'#', onClick: 'OpenBoard(' + $data.ProjectConfigId + ')'}"></a>
-
-                                        <span data-bind="visible: $data.Status == 'Removed', text: $data.Name"></span>
-                                        <span data-bind="if: $data.IsShared && $data.HasDiffs" style='font-size:15px;'> has been updated in Asana</span>
-                                    </h4>
-
-                                    <p style="margin-left: 1px;">
-
-                                        <!--<a data-bind="if: $data.Status != 'Removed', attr:{ href:'/projects/edit/' + $data.ProjectConfigId}">
-                                            Edit <i class="icon-edit">
-                                            </i>
-                                        </a> <span style="font-size: 11px;" data-bind="if: $data.Status != 'Removed'">| </span>
-
-                                        <a data-bind="if: $data.IsShared == false && $data.Status != 'Removed', click: $parent.PublishBoard" href="#">
-                                            Publish <i class="icon-rss">
-                                            </i>
-                                        </a>-->
-                                        <!--<div>
-
-                                            <span data-bind="text: $data.CalcCompletePercent + '%'"></span> Complete
-                                        </div>-->
-                                        <!--<a data-bind="if: $data.IsShared, attr:{ href:'/share/' + $data.RefNo}">
-                                            View Published <i class="icon-external-link">
-                                            </i>
-                                        </a> <span style="font-size: 11px;" data-bind="if: $data.IsShared">| </span>
-
-                                        <a data-bind="if: $data.IsShared && $data.HasDiffs, click: $parent.PublishBoard" href="#">
-                                            Republish <i class="icon-rss">
-                                            </i>
-                                        </a><span style="font-size: 11px;" data-bind="if: $data.IsShared && $data.HasDiffs">| </span>
-
-                                        <a data-bind="if: $data.IsShared, click: $parent.UnpublishBoard" href="#">
-                                            Unpublish <i class="icon-minus-sign">
-                                            </i>
-                                        </a><span style="font-size: 11px;" data-bind="if: $data.IsShared">| </span>-->
-
-                                        <a data-bind="if: $data.IsShared, click: $parent.GetLink" href="#">
-                                            <span data-bind="attr:{ id: 'linktext-' + $data.ProjectConfigId}">Get Link </span><i class="icon-link">
-                                            </i>
-                                        </a><input type="text" style="display:none;" data-bind="if: $data.IsShared, attr:{ id: 'link-' + $data.ProjectConfigId, value: '@domain' + 'share/' + $data.RefNo}" />
-                                        <!--<span data-bind="if: $data.Status != 'Removed'" style="font-size: 11px;">| </span>-->
-
-                                        <a href="#" data-bind="click: $parent.RemoveBoard">
-                                            Remove <i class="icon-trash"></i>
-                                        </a>
-                                    </p>
-                                </div>
-
-                                <div class="portfolio-info displayinline mr30">
-                                    % Complete
-                                    <span data-bind="text: $data.CalcCompletePercent + '%'"></span>
-                                </div>
-                                <div class="portfolio-info displayinline mr30">
-                                    Milestones To Do <span data-bind="text: $data.RemainingMilestoneToCompleteCount + ' of ' + $data.MilestoneCount">0 of 0</span>
-                                </div>
-                                <div class="portfolio-info displayinline mr30">
-                                    Discussion Items <span data-bind="text: $data.RemainingDiscussionsToCompleteCount">0</span>
-                                </div>
-
+                    <div class="span4 responsive" data-tablet="span4" data-desktop="span4">
+                        <div class="dashboard-stat blue">
+                            <div class="visual">
+                                <i class="icon-medkit"></i>
                             </div>
-
-                            <!--<div class="span3" style="overflow: hidden;">
-                                <div class="portfolio-info displayinline mr30">
-                                    % Complete
-                                    <span data-bind="text: $data.CalcCompletePercent + '%'"></span>
+                            <div class="details">
+                                <div class="number">
+                                    <span data-bind="text: ProjectsOnTrack">0</span> of <span data-bind="text: ProjectsTotal">0</span>
                                 </div>
-                                <div class="portfolio-info displayinline mr30">
-                                    Milestones To Do <span data-bind="text: $data.RemainingMilestoneToCompleteCount + ' of ' + $data.MilestoneCount">0 of 0</span>
+                                <div class="desc">
+                                    Projects On Track
                                 </div>
-                                <div class="portfolio-info displayinline mr30">
-                                    Discussion Items <span data-bind="text: $data.RemainingDiscussionsToCompleteCount">0</span>
-                                </div>
-                            </div>-->
-
+                            </div>
+                            <span class="more">The health of your Sprintboards projects</span>
                         </div>
                     </div>
+                    <div class="span4 responsive" data-tablet="span4" data-desktop="span4">
+                        <div class="dashboard-stat yellow">
+                            <div class="visual">
+                                <i class="icon-flag"></i>
+                            </div>
+                            <div class="details">
+                                <div class="number" data-bind="text: MilestonesTodo">
+                                    0
+                                </div>
+                                <div class="desc">
+                                    Milestones To Do
+                                </div>
+                            </div>
+                            <span class="more">How many milestones are there to complete</span>
+                        </div>
+                    </div>
+                    <div class="span4 responsive" data-tablet="span4" data-desktop="span4">
+                        <div class="dashboard-stat green">
+                            <div class="visual">
+                                <i class="icon-comments"></i>
+                            </div>
+                            <div class="details">
+                                <div class="number" data-bind="text: DiscussionsTodo">
+                                    0
+                                </div>
+                                <div class="desc">
+                                    Discussion Items
+                                </div>
+                            </div>
+                            <span class="more">Issues, Risks, Next Steps, Questions, Etc</span>
+                        </div>
+                    </div>
+
 
                 </div>
 
+
+
+
+                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                <div id="email-config" class="modal hide" data-keyboard="false" data-backdrop="static">
+                    <div class="modal-header">
+                        <button data-dismiss="modal" class="close" type="button"></button>
+                        <h3>Share this Sprintboard</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-info">
+                            <strong class="big" style="padding:0px;">Copy & Paste:</strong><br />
+
+                            <input type="text" id="theurl" style="width:450px;" class="" style="background-color:White;" value="http://dev.sprintboards.com/share/53e8b2bd-8bdc-43dd-ac92-81369936867e" />
+
+                        </div>
+
+                        <div class="control-group">
+
+                            <div class="controls">
+
+                                <a href="http://dev.sprintboards.com/share/53e8b2bd-8bdc-43dd-ac92-81369936867e" target="_blank" class="big">Copy this link to the Sprintboard</a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn" data-dismiss="modal" type="button">OK</button>
+
+                    </div>
+                </div>
+
+
+
+                <!-- BEGIN PAGE CONTAINER-->
+                <div class="container-fluid" id="page-itself" style="">
+
+                    <div class="row-fluid">
+
+                        <!-- END DASHBOARD STATS -->
+                        <div class="clearfix"></div>
+
+                        <!-- Start Add Project Row -->
+                        <div class="row-fluid add-portfolio">
+                            <div class="pull-left">
+
+                                <span data-bind="if: AllLoaded() == false"><span>Fetching </span><span data-bind="text: ProjectsToLoad"></span><span> sprintboards...</span></span>
+
+                            </div>
+
+                        </div>
+                        <!-- End Add Project Row -->
+
+                        <div class="board-row" data-bind="foreach: Boards">
+                            <form data-bind="attr:{action: '/projects/share/' + $data.ProjectConfigId, id: 'shareme-' + $data.ProjectConfigId}" method='post'></form>
+                            <form data-bind="if: $data.IsShared, attr:{action: '/projects/removeshare/' + $data.ProjectConfigId, id: 'unshareme-' + $data.ProjectConfigId}" method='post'></form>
+                            <div class="row-fluid portfolio-block">
+                                <div class="span9 portfolio-text">
+                                    <i data-bind="css: { 'icon-ok green': Status == 'On Track', 'icon-remove red': Status == 'Off Track', 'icon-warning-sign orange': Status == 'Warning', 'icon-trash': Status == 'Removed' }" class="icon-3x pull-left icon-border" style="margin: 10px;"></i>
+                                    <div class="portfolio-text-info">
+                                        <h4>
+                                            <a data-bind="visible: $data.Status != 'Removed', text: $data.Name, attr:{ href:'#', onClick: 'OpenBoard(' + $data.ProjectConfigId + ')'}"></a>
+
+                                            <span data-bind="visible: $data.Status == 'Removed', text: $data.Name"></span>
+                                            <span data-bind="if: $data.IsShared && $data.HasDiffs" style='font-size:15px;'> has been updated in Asana</span>
+                                        </h4>
+
+                                        <p style="margin-left: 1px;">
+
+                                            <!--<a data-bind="if: $data.Status != 'Removed', attr:{ href:'/projects/edit/' + $data.ProjectConfigId}">
+                                    Edit <i class="icon-edit">
+                                    </i>
+                                </a> <span style="font-size: 11px;" data-bind="if: $data.Status != 'Removed'">| </span>
+
+                                <a data-bind="if: $data.IsShared == false && $data.Status != 'Removed', click: $parent.PublishBoard" href="#">
+                                    Publish <i class="icon-rss">
+                                    </i>
+                                </a>-->
+                                            <!--<div>
+
+                                    <span data-bind="text: $data.CalcCompletePercent + '%'"></span> Complete
+                                </div>-->
+                                            <!--<a data-bind="if: $data.IsShared, attr:{ href:'/share/' + $data.RefNo}">
+                                    View Published <i class="icon-external-link">
+                                    </i>
+                                </a> <span style="font-size: 11px;" data-bind="if: $data.IsShared">| </span>
+
+                                <a data-bind="if: $data.IsShared && $data.HasDiffs, click: $parent.PublishBoard" href="#">
+                                    Republish <i class="icon-rss">
+                                    </i>
+                                </a><span style="font-size: 11px;" data-bind="if: $data.IsShared && $data.HasDiffs">| </span>
+
+                                <a data-bind="if: $data.IsShared, click: $parent.UnpublishBoard" href="#">
+                                    Unpublish <i class="icon-minus-sign">
+                                    </i>
+                                </a><span style="font-size: 11px;" data-bind="if: $data.IsShared">| </span>-->
+
+                                            <a data-bind="if: $data.IsShared, click: $parent.GetLink" href="#">
+                                                <span data-bind="attr:{ id: 'linktext-' + $data.ProjectConfigId}">Get Link </span><i class="icon-link">
+                                                </i>
+                                            </a><input type="text" style="display:none;" data-bind="if: $data.IsShared, attr:{ id: 'link-' + $data.ProjectConfigId, value: '@domain' + 'share/' + $data.RefNo}" />
+                                            <!--<span data-bind="if: $data.Status != 'Removed'" style="font-size: 11px;">| </span>-->
+
+                                            <a href="#" data-bind="click: $parent.RemoveBoard">
+                                                Remove <i class="icon-trash"></i>
+                                            </a>
+                                        </p>
+                                    </div>
+
+                                    <div class="portfolio-info displayinline mr30">
+                                        % Complete
+                                        <span data-bind="text: $data.CalcCompletePercent + '%'"></span>
+                                    </div>
+                                    <div class="portfolio-info displayinline mr30">
+                                        Milestones To Do <span data-bind="text: $data.RemainingMilestoneToCompleteCount + ' of ' + $data.MilestoneCount">0 of 0</span>
+                                    </div>
+                                    <div class="portfolio-info displayinline mr30">
+                                        Discussion Items <span data-bind="text: $data.RemainingDiscussionsToCompleteCount">0</span>
+                                    </div>
+
+                                </div>
+
+                                <!--<div class="span3" style="overflow: hidden;">
+                        <div class="portfolio-info displayinline mr30">
+                            % Complete
+                            <span data-bind="text: $data.CalcCompletePercent + '%'"></span>
+                        </div>
+                        <div class="portfolio-info displayinline mr30">
+                            Milestones To Do <span data-bind="text: $data.RemainingMilestoneToCompleteCount + ' of ' + $data.MilestoneCount">0 of 0</span>
+                        </div>
+                        <div class="portfolio-info displayinline mr30">
+                            Discussion Items <span data-bind="text: $data.RemainingDiscussionsToCompleteCount">0</span>
+                        </div>
+                    </div>-->
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!-- END PAGE CONTAINER-->
+
+
             </div>
-            <!-- END PAGE CONTAINER-->
+
+           
         </div>
         <!-- END PAGE -->
         <!--@{
