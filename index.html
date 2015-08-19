@@ -24,6 +24,11 @@
 			
         }
 
+
+        document.addEventListener("deviceready", function () {
+            alert("onDeviceReady");
+        }, true);
+
     </script>
 
     <meta charset="utf-8" />
@@ -374,9 +379,7 @@
         //}
 
 
-        document.addEventListener("deviceready", function () {
-            alert("onDeviceReady");
-        }, true);
+        
 
         //var pushNotification;
 
