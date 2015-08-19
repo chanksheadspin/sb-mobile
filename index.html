@@ -25,20 +25,26 @@
                 }
                 else {
 
+                    alert("innoboards");
+
                     var boards = localStorage.getItem('boards');
 
                     if (typeof boards == 'undefined' || boards == null || boards.length < 1)
                     {
                                                 window.location = "noboards.html";
                     }
+
+
                     
                 }
             }
         }
 
         function OpenCurrentBoard(id) {
+
+            alert("opencurrentboard" + id);
             if (id > 0) {
-                localStorage["currentboardid"] = id;
+                
                 window.location = "board.html";
             }
         }
