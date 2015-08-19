@@ -10,24 +10,24 @@
     <script type="text/javascript">
 
         function ShowWelcome() {
-            $(".welcome").removeClass("hide");
+            $(".welcomediv").removeClass("hide");
             $(".boardlist").addClass("hide");
             localStorage.setItem("hasseenapp", true);
         }
 
         function HideWelcome() {
-            $(".welcome").addClass("hide");
+            $(".welcomediv").addClass("hide");
             $(".boardlist").removeClass("hide");
         }
 
         function ShowNoBoards() {
-            $(".noboards").removeClass("hide");
+            $(".noboarddiv").removeClass("hide");
             $(".boardlist").addClass("hide");
             //localStorage.setItem("hasseenapp", true);
         }
 
         function HideNoBoards() {
-            $(".noboards").addClass("hide");
+            $(".noboarddiv").addClass("hide");
             $(".boardlist").removeClass("hide");
         }
 
@@ -44,18 +44,24 @@
             }
             else {
 
+                var boards = localStorage.getItem('boards');
+
+
                 if (!localStorage["currentboardid"] && localStorage["currentboardid"] > 0) {
                     OpenCurrentBoard(localStorage("currentboardid"));
                 }
-                else {
-                    var boards = localStorage.getItem('boards');
-
-                    if (typeof boards == 'undefined' || boards == null || boards.length < 1) {
-                        alert("innoboards");
+                else if (typeof boards == 'undefined' || boards == null || boards.length < 1) {
+                    
 
                         ShowNoBoards();
-                    }
+                  
                 }
+                else
+                {
+                    HideWelcome();
+                    HideNoBoards();
+                }
+
             }
         }
 
@@ -143,7 +149,7 @@
 
         <div class="page-content pt30" id="page-shell">
 
-            <div class="welcome hide">
+            <div class="welcomediv hide">
                 Preview page.
 
                 Welcome to the Sprintboards App!
@@ -166,7 +172,7 @@
             </div>
 
 
-            <div class="noboards hide">
+            <div class="noboarddiv hide">
                 <h3>No Boards!</h3>
 
 
