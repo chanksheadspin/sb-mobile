@@ -11,6 +11,8 @@
 
         function OnIndexLoad() {
 
+            alert("onindexload");
+
             //localStorage.clear();
 
             var firstTime = localStorage["hasseenapp"];
@@ -33,10 +35,7 @@
                     {
                                                 window.location = "noboards.html";
                     }
-
-
-                    
-                }
+                                    }
             }
         }
 
@@ -55,8 +54,6 @@
                 var sbId = GetParameterValues('sbid', url);
                 OpenCurrentBoard(sbId);
                 
-                OnIndexLoad();
-
             }, 200);
 
         }
@@ -454,6 +451,7 @@
             // initiate layout and plugins
             App.init();
 
+            OnIndexLoad();
 
             //OnIndexLoad();
 
