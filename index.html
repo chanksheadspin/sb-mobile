@@ -84,7 +84,7 @@
 
             //alert("opencurrentboard" + id);
             if (id > 0) {
-                localStorage("currentboarid");
+                localStorage.setItem("currentboardid", id);
                 window.location = "board.html";
             }
         }
@@ -545,23 +545,17 @@
 
             //OnIndexLoad();
 
-            //var currentUrl = window.location.href;
-            ////only to be used when testing on the desktop
-            //var sbId = GetParameterValues('sbid', currentUrl);
-
-            //if (sbId > 0) {
-
-            //    localStorage["currentboardid"] = sbId;
-            //    window.location = "board.html";
-
-            //}
-
-            //var clearLocalStorage = GetParameterValues('clearlocalstorage', currentUrl);
-
-            //if (clearLocalStorage == "true") {
-            //    localStorage.clear();
-            //    alert("clearinglocalstorage");
-            //}
+            var currentUrl = window.location.href;
+            //only to be used when testing on the desktop
+            var sbId = GetParameterValues('sbid', currentUrl);
+            if (sbId > 0) {
+                OpenCurrentBoard(sbId);
+            }
+            var clearLocalStorage = GetParameterValues('clearlocalstorage', currentUrl);
+            if (clearLocalStorage == "true") {
+                localStorage.clear();
+                alert("clearinglocalstorage");
+            }
 
             try {
                 var projectsCount = 0;
