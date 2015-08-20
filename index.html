@@ -24,6 +24,7 @@
             $(".noboarddiv").removeClass("hide");
             $(".boardlist").addClass("hide");
             //localStorage.setItem("hasseenapp", true);
+            alert("here");
         }
 
         function HideNoBoards() {
@@ -56,10 +57,10 @@
                 }
                 else if (typeof boards == 'undefined' || boards == null || boards.length < 1) {
                     
-                    alert("here");
+                    alert("herenoboards");
 
                     ShowNoBoards();
-                    HideWelcome();
+                    //HideWelcome();
                   
                 }
                 else
@@ -70,7 +71,7 @@
 
 
                     HideWelcome();
-                    HideNoBoards();
+                    //HideNoBoards();
                 }
 
             }
@@ -194,7 +195,7 @@
 
             </div>
 
-            <div class="boardlist">
+            <div class="boardlist hide">
                 <div class="row-fluid">
                     <div class="span4 responsive" data-tablet="span4" data-desktop="span4">
                         <div class="dashboard-stat blue">
@@ -320,32 +321,32 @@
                                         <p style="margin-left: 1px;">
 
                                             <!--<a data-bind="if: $data.Status != 'Removed', attr:{ href:'/projects/edit/' + $data.ProjectConfigId}">
-                                    Edit <i class="icon-edit">
-                                    </i>
-                                </a> <span style="font-size: 11px;" data-bind="if: $data.Status != 'Removed'">| </span>
+                                        Edit <i class="icon-edit">
+                                        </i>
+                                    </a> <span style="font-size: 11px;" data-bind="if: $data.Status != 'Removed'">| </span>
 
-                                <a data-bind="if: $data.IsShared == false && $data.Status != 'Removed', click: $parent.PublishBoard" href="#">
-                                    Publish <i class="icon-rss">
-                                    </i>
-                                </a>-->
+                                    <a data-bind="if: $data.IsShared == false && $data.Status != 'Removed', click: $parent.PublishBoard" href="#">
+                                        Publish <i class="icon-rss">
+                                        </i>
+                                    </a>-->
                                             <!--<div>
 
-                                    <span data-bind="text: $data.CalcCompletePercent + '%'"></span> Complete
-                                </div>-->
+                                        <span data-bind="text: $data.CalcCompletePercent + '%'"></span> Complete
+                                    </div>-->
                                             <!--<a data-bind="if: $data.IsShared, attr:{ href:'/share/' + $data.RefNo}">
-                                    View Published <i class="icon-external-link">
-                                    </i>
-                                </a> <span style="font-size: 11px;" data-bind="if: $data.IsShared">| </span>
+                                        View Published <i class="icon-external-link">
+                                        </i>
+                                    </a> <span style="font-size: 11px;" data-bind="if: $data.IsShared">| </span>
 
-                                <a data-bind="if: $data.IsShared && $data.HasDiffs, click: $parent.PublishBoard" href="#">
-                                    Republish <i class="icon-rss">
-                                    </i>
-                                </a><span style="font-size: 11px;" data-bind="if: $data.IsShared && $data.HasDiffs">| </span>
+                                    <a data-bind="if: $data.IsShared && $data.HasDiffs, click: $parent.PublishBoard" href="#">
+                                        Republish <i class="icon-rss">
+                                        </i>
+                                    </a><span style="font-size: 11px;" data-bind="if: $data.IsShared && $data.HasDiffs">| </span>
 
-                                <a data-bind="if: $data.IsShared, click: $parent.UnpublishBoard" href="#">
-                                    Unpublish <i class="icon-minus-sign">
-                                    </i>
-                                </a><span style="font-size: 11px;" data-bind="if: $data.IsShared">| </span>-->
+                                    <a data-bind="if: $data.IsShared, click: $parent.UnpublishBoard" href="#">
+                                        Unpublish <i class="icon-minus-sign">
+                                        </i>
+                                    </a><span style="font-size: 11px;" data-bind="if: $data.IsShared">| </span>-->
 
                                             <a data-bind="if: $data.IsShared, click: $parent.GetLink" href="#">
                                                 <span data-bind="attr:{ id: 'linktext-' + $data.ProjectConfigId}">Get Link </span><i class="icon-link">
@@ -373,17 +374,17 @@
                                 </div>
 
                                 <!--<div class="span3" style="overflow: hidden;">
-                        <div class="portfolio-info displayinline mr30">
-                            % Complete
-                            <span data-bind="text: $data.CalcCompletePercent + '%'"></span>
-                        </div>
-                        <div class="portfolio-info displayinline mr30">
-                            Milestones To Do <span data-bind="text: $data.RemainingMilestoneToCompleteCount + ' of ' + $data.MilestoneCount">0 of 0</span>
-                        </div>
-                        <div class="portfolio-info displayinline mr30">
-                            Discussion Items <span data-bind="text: $data.RemainingDiscussionsToCompleteCount">0</span>
-                        </div>
-                    </div>-->
+                            <div class="portfolio-info displayinline mr30">
+                                % Complete
+                                <span data-bind="text: $data.CalcCompletePercent + '%'"></span>
+                            </div>
+                            <div class="portfolio-info displayinline mr30">
+                                Milestones To Do <span data-bind="text: $data.RemainingMilestoneToCompleteCount + ' of ' + $data.MilestoneCount">0 of 0</span>
+                            </div>
+                            <div class="portfolio-info displayinline mr30">
+                                Discussion Items <span data-bind="text: $data.RemainingDiscussionsToCompleteCount">0</span>
+                            </div>
+                        </div>-->
 
                             </div>
                         </div>
