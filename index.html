@@ -24,7 +24,7 @@
             $(".noboarddiv").removeClass("hide");
             $(".boardlist").addClass("hide");
             //localStorage.setItem("hasseenapp", true);
-            alert("here");
+            //alert("here");
         }
 
         function HideNoBoards() {
@@ -45,13 +45,13 @@
             }
             else {
 
-                var boards = localStorage.getItem('boards');
+                var boards = JSON.parse(localStorage["boards"]);
 
-
+                console.log("boards", boards.length);
+                
                 if (!localStorage["currentboardid"] && localStorage["currentboardid"] > 0) {
 
                     //alert("here3");
-
 
                     OpenCurrentBoard(localStorage("currentboardid"));
                 }
@@ -88,6 +88,12 @@
 
         function handleOpenURL(url) {
             setTimeout(function () {
+                var clearLocalStorage = GetParameterValues('clearlocalstorage', url);
+
+                if (clearLocalStorage == "true")
+                {
+                    localStorage.clear();
+                }
 
                 var sbId = GetParameterValues('sbid', url);
                 OpenCurrentBoard(sbId);
@@ -535,16 +541,16 @@
 
             //OnIndexLoad();
 
-            //var currentUrl = window.location.href;
-            ////only to be used when testing on the desktop
-            //var sbId = GetParameterValues('sbid', currentUrl);
+            var currentUrl = window.location.href;
+            //only to be used when testing on the desktop
+            var sbId = GetParameterValues('sbid', currentUrl);
 
-            //if (sbId > 0) {
+            if (sbId > 0) {
 
-            //    localStorage["currentboardid"] = sbId;
-            //    window.location = "board.html";
+                localStorage["currentboardid"] = sbId;
+                window.location = "board.html";
 
-            //}
+            }
 
             try {
                 var projectsCount = 0;
