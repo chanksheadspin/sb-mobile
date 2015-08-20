@@ -12,7 +12,6 @@
         function ShowWelcome() {
             $(".welcomediv").removeClass("hide");
             $(".boardlist").addClass("hide");
-            localStorage.setItem("hasseenapp", true);
             //alert("showwelcome");
         }
 
@@ -39,24 +38,30 @@
 
             //localStorage.clear();
 
+            console.log("currentboardid2", localStorage["currentboardid"]);
+
             var firstTime = localStorage.getItem("hasseenapp");
+
+            //alert(firstTime);
 
             if (firstTime == null || firstTime == false) {
                 ShowWelcome();
+                
             }
             else {
                 //route.gotoboard = true;
 
                 var boards;
-
-                if (localStorage["boards"])
+                   if (localStorage["boards"])
                 {
                     boards = JSON.parse(localStorage["boards"]);
                 }
                 
-                var boardid = parseInt(localStorage.getItem("currentboardid"));
+                console.log("currrentboardid3", localStorage["currentboardid"]);
 
-                console.log("currrentboarid", boardid);
+                var boardid = parseInt(localStorage["currentboardid"]);
+                
+                console.log("currrentboardid4", boardid);
                 
                 if (boardid != null && boardid > 0) {
                     //alert("here3");
@@ -65,8 +70,9 @@
                 }
                 else if (typeof boards == 'undefined' || boards == null || boards.length < 1) {
                     
-                    alert("herenoboards");
+                    //alert("herenoboards");
 
+                    HideWelcome();
                     ShowNoBoards();
                     //HideWelcome();
                   
@@ -81,30 +87,28 @@
 
             }
         }
-
-        function OpenCurrentBoard(id) {
-
-            //alert("opencurrentboard" + id);
-            if (id > 0) {
-                localStorage.setItem("currentboardid", id);
-                window.location = "board.html";
-            }
-        }
+               
 
         function handleOpenURL(url) {
             setTimeout(function () {
-                var clearLocalStorage = GetParameterValues('clearlocalstorage', url);
-
-                if (clearLocalStorage == "true")
-                {
-                    localStorage.clear();
-                }
 
                 var sbId = GetParameterValues('sbid', url);
-                localStorage.setItem("currentboardid", sbId)
+                if (sbId > 0)
+                {
+                    localStorage.setItem("currentboardid", sbId);
+                }
+
+                console.log("handleid", localStorage.getItem("currentboardid"));
+                
                 OnIndexLoad();
 
-            }, 200);
+                var clearLocalStorage = GetParameterValues('clearlocalstorage', url);
+
+                if (clearLocalStorage == "true") {
+                    console.log("remove");
+                    localStorage.clear();
+                }
+                            }, 200);
 
         }
 
@@ -188,7 +192,7 @@
                     Remove a board from your pinned list by pressing remove.
                 </p>
 
-                <a href="index.html" class="btn">Thank you, Let me go to App</a>
+                <a href="#" class="btn seenwelcome">Open</a>
 
 
             </div>
@@ -472,6 +476,8 @@
 
     <script type="text/javascript">
 
+
+
         function OpenBoard(id) {
 
             localStorage.setItem("currentboardid", id);
@@ -488,6 +494,8 @@
                 }
             }
         }
+
+        
 
         //var pushNotification;
 
@@ -542,32 +550,26 @@
             // initiate layout and plugins
             App.init();
 
-
+            $(".seenwelcome").on("click", function () {
+                localStorage.setItem("hasseenapp", true);
+                OnIndexLoad();
+            });
 
             //var currentUrl = window.location.href;
 
-            //var route = { gotoboard: false };
+            ////var route = { gotoboard: false };
             //var sbId = GetParameterValues('sbid', currentUrl);
-            //localStorage.setItem("currentboardid", sbId)
-            //OnIndexLoad();
-
+            
+            //localStorage["currentboardid"] = sbId;
+            //console.log("currenboardid1", localStorage["currentboardid"]);
+            
             OnIndexLoad();
 
-            //if(route.gotoboard == true)
-            //{
-            //    var currentUrl = window.location.href;
-            //    //only to be used when testing on the desktop
-            //    var sbId = GetParameterValues('sbid', currentUrl);
-            //    if (sbId > 0) {
-            //        OpenCurrentBoard(sbId);
-            //    }
-            //}
-            
-            //var clearLocalStorage = GetParameterValues('clearlocalstorage', currentUrl);
-            //if (clearLocalStorage == "true") {
-            //    localStorage.clear();
-            //    alert("clearinglocalstorage");
-            //}
+            var clearLocalStorage = GetParameterValues('clearlocalstorage', currentUrl);
+            if (clearLocalStorage == "true") {
+                localStorage.clear();
+                console.log("remove");
+            }
 
             try {
                 var projectsCount = 0;
