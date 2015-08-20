@@ -13,7 +13,7 @@
             $(".welcomediv").removeClass("hide");
             $(".boardlist").addClass("hide");
             localStorage.setItem("hasseenapp", true);
-            alert("showwelcome");
+            //alert("showwelcome");
         }
 
         function HideWelcome() {
@@ -45,25 +45,27 @@
                 ShowWelcome();
             }
             else {
+                //route.gotoboard = true;
+
                 var boards;
 
                 if (localStorage["boards"])
                 {
                     boards = JSON.parse(localStorage["boards"]);
-
                 }
                 
-                //console.log("boards", boards.length);
+                var boardid = parseInt(localStorage.getItem("currentboardid"));
+
+                console.log("currrentboarid", boardid);
                 
-                if (!localStorage["currentboardid"] && localStorage["currentboardid"] > 0) {
-
+                if (boardid != null && boardid > 0) {
                     //alert("here3");
-
-                    OpenCurrentBoard(localStorage("currentboardid"));
+                    //OpenCurrentBoard(localStorage("currentboardid"));
+                    window.location = "board.html";
                 }
                 else if (typeof boards == 'undefined' || boards == null || boards.length < 1) {
                     
-                    //alert("herenoboards");
+                    alert("herenoboards");
 
                     ShowNoBoards();
                     //HideWelcome();
@@ -98,11 +100,10 @@
                     localStorage.clear();
                 }
 
-                var sbId = GetParameterValues('sbid', url);
-                OpenCurrentBoard(sbId);
+                var sbId = GetParameterValues('sbid', currentUrl);
+                localStorage.setItem("currentboardid", sbId)
+                OnIndexLoad();
 
-                //OnIndexLoad();
-                
             }, 200);
 
         }
@@ -541,21 +542,32 @@
             // initiate layout and plugins
             App.init();
 
-            OnIndexLoad();
 
+
+            //var currentUrl = window.location.href;
+
+            //var route = { gotoboard: false };
+            //var sbId = GetParameterValues('sbid', currentUrl);
+            //localStorage.setItem("currentboardid", sbId)
             //OnIndexLoad();
 
-            var currentUrl = window.location.href;
-            //only to be used when testing on the desktop
-            var sbId = GetParameterValues('sbid', currentUrl);
-            if (sbId > 0) {
-                OpenCurrentBoard(sbId);
-            }
-            var clearLocalStorage = GetParameterValues('clearlocalstorage', currentUrl);
-            if (clearLocalStorage == "true") {
-                localStorage.clear();
-                alert("clearinglocalstorage");
-            }
+            OnIndexLoad();
+
+            //if(route.gotoboard == true)
+            //{
+            //    var currentUrl = window.location.href;
+            //    //only to be used when testing on the desktop
+            //    var sbId = GetParameterValues('sbid', currentUrl);
+            //    if (sbId > 0) {
+            //        OpenCurrentBoard(sbId);
+            //    }
+            //}
+            
+            //var clearLocalStorage = GetParameterValues('clearlocalstorage', currentUrl);
+            //if (clearLocalStorage == "true") {
+            //    localStorage.clear();
+            //    alert("clearinglocalstorage");
+            //}
 
             try {
                 var projectsCount = 0;
