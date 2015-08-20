@@ -50,14 +50,14 @@
 
                 if (!localStorage["currentboardid"] && localStorage["currentboardid"] > 0) {
 
-                    alert("here3");
+                    //alert("here3");
 
 
                     OpenCurrentBoard(localStorage("currentboardid"));
                 }
                 else if (typeof boards == 'undefined' || boards == null || boards.length < 1) {
                     
-                    alert("herenoboards");
+                    //alert("herenoboards");
 
                     ShowNoBoards();
                     //HideWelcome();
@@ -67,7 +67,7 @@
                 {
 
 
-                    alert(boards.length);
+                    //alert(boards.length);
 
 
                     HideWelcome();
@@ -79,9 +79,9 @@
 
         function OpenCurrentBoard(id) {
 
-            alert("opencurrentboard" + id);
+            //alert("opencurrentboard" + id);
             if (id > 0) {
-                
+                localStorage("currentboarid");
                 window.location = "board.html";
             }
         }
