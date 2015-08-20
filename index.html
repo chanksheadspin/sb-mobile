@@ -45,10 +45,15 @@
                 ShowWelcome();
             }
             else {
+                var boards;
 
-                var boards = JSON.parse(localStorage["boards"]);
+                if (localStorage["boards"])
+                {
+                    boards = JSON.parse(localStorage["boards"]);
 
-                console.log("boards", boards.length);
+                }
+                
+                //console.log("boards", boards.length);
                 
                 if (!localStorage["currentboardid"] && localStorage["currentboardid"] > 0) {
 
@@ -66,10 +71,7 @@
                 }
                 else
                 {
-
-
                     //alert(boards.length);
-
 
                     HideWelcome();
                     //HideNoBoards();
@@ -535,6 +537,7 @@
 
 
         jQuery(document).ready(function () {
+
             // initiate layout and plugins
             App.init();
 
@@ -551,6 +554,13 @@
             //    localStorage["currentboardid"] = sbId;
             //    window.location = "board.html";
 
+            //}
+
+            //var clearLocalStorage = GetParameterValues('clearlocalstorage', currentUrl);
+
+            //if (clearLocalStorage == "true") {
+            //    localStorage.clear();
+            //    alert("clearinglocalstorage");
             //}
 
             try {
