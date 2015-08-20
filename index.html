@@ -39,7 +39,7 @@
 
             //localStorage.clear();
 
-            var firstTime = localStorage["hasseenapp"];
+            var firstTime = localStorage.getItem("hasseenapp");
 
             if (firstTime == null || firstTime == false) {
                 ShowWelcome();
@@ -101,7 +101,7 @@
                 var sbId = GetParameterValues('sbid', url);
                 OpenCurrentBoard(sbId);
 
-                OnIndexLoad();
+                //OnIndexLoad();
                 
             }, 200);
 
