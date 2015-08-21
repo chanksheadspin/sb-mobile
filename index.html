@@ -7,112 +7,7 @@
 <!-- BEGIN HEAD -->
 <head>
 
-    <script type="text/javascript">
-
-        function ShowWelcome() {
-            $(".welcomediv").removeClass("hide");
-            $(".boardlist").addClass("hide");
-            //alert("showwelcome");
-        }
-
-        function HideWelcome() {
-            $(".welcomediv").addClass("hide");
-            $(".boardlist").removeClass("hide");
-        }
-
-        function ShowNoBoards() {
-            $(".noboarddiv").removeClass("hide");
-            $(".boardlist").addClass("hide");
-            //localStorage.setItem("hasseenapp", true);
-            //alert("here");
-        }
-
-        function HideNoBoards() {
-            $(".noboarddiv").addClass("hide");
-            $(".boardlist").removeClass("hide");
-        }
-
-        function OnIndexLoad() {
-
-            //alert("onindexload");
-
-            //localStorage.clear();
-
-            console.log("currentboardid2", localStorage["currentboardid"]);
-
-            var firstTime = localStorage.getItem("hasseenapp");
-
-            //alert(firstTime);
-
-            if (firstTime == null || firstTime == false) {
-                ShowWelcome();
-                
-            }
-            else {
-                //route.gotoboard = true;
-
-                var boards;
-                   if (localStorage["boards"])
-                {
-                    boards = JSON.parse(localStorage["boards"]);
-                }
-                
-                console.log("currrentboardid3", localStorage["currentboardid"]);
-
-                var boardid = parseInt(localStorage["currentboardid"]);
-                
-                console.log("currrentboardid4", boardid);
-                
-                if (boardid != null && boardid > 0) {
-                    //alert("here3");
-                    //OpenCurrentBoard(localStorage("currentboardid"));
-                    window.location = "board.html";
-                }
-                else if (typeof boards == 'undefined' || boards == null || boards.length < 1) {
-                    
-                    //alert("herenoboards");
-
-                    HideWelcome();
-                    ShowNoBoards();
-                    //HideWelcome();
-                  
-                }
-                else
-                {
-                    //alert(boards.length);
-
-                    HideWelcome();
-                    //HideNoBoards();
-                }
-
-            }
-        }
-               
-
-        function handleOpenURL(url) {
-            setTimeout(function () {
-
-                var sbId = GetParameterValues('sbid', url);
-                if (sbId > 0)
-                {
-                    localStorage.setItem("currentboardid", sbId);
-                }
-
-                console.log("handleid", localStorage.getItem("currentboardid"));
-                
-                OnIndexLoad();
-
-                var clearLocalStorage = GetParameterValues('clearlocalstorage', url);
-
-                if (clearLocalStorage == "true") {
-                    console.log("remove");
-                    localStorage.clear();
-                }
-                            }, 200);
-
-        }
-
-    </script>
+    <script type="text/javascript" src="scripts/sbhandlers.js"></script>
 
     <meta charset="utf-8" />
     <title>Sprintboards</title>
@@ -476,74 +371,7 @@
 
     <script type="text/javascript">
 
-
-
-        function OpenBoard(id) {
-
-            localStorage.setItem("currentboardid", id);
-
-            window.location = "board.html";
-        }
-
-        function GetParameterValues(param, currUrl) {
-            var url = currUrl.slice(currUrl.indexOf('?') + 1).split('&');
-            for (var i = 0; i < url.length; i++) {
-                var urlparam = url[i].split('=');
-                if (urlparam[0] == param) {
-                    return urlparam[1];
-                }
-            }
-        }
-
         
-
-        //var pushNotification;
-
-        //document.addEventListener("deviceready", function(){
-        //    pushNotification = window.plugins.pushNotification;
-        //    alert("deviceready, registring pushNotifications");
-
-        //    pushNotification.register(
-        //    tokenHandler,
-        //    errorHandler,
-        //    {
-        //        "badge": "true",
-        //        "sound": "true",
-        //        "alert": "true",
-        //        "ecb": "onNotificationAPN"
-        //    });
-
-        //});
-
-        //function onNotificationAPN(event) {
-        //    if (event.alert) {
-        //        navigator.notification.alert(event.alert);
-        //    }
-
-        //    if (event.sound) {
-        //        var snd = new Media(event.sound);
-        //        snd.play();
-        //    }
-
-        //    if (event.badge) {
-        //        pushNotification.setApplicationIconBadgeNumber(successHandler, errorHandler, event.badge);
-        //    }
-        //}
-
-        //function tokenHandler(result) {
-        //    // Your iOS push server needs to know the token before it can push to this device
-        //    // here is where you might want to send it the token for later use.
-        //    alert('device token = ' + result);
-        //}
-
-
-
-        //function errorHandler(error) {
-        //    // Your iOS push server needs to know the token before it can push to this device
-        //    // here is where you might want to send it the token for later use.
-        //    alert('error = ' + error);
-        //}
-
 
         jQuery(document).ready(function () {
 
@@ -555,6 +383,9 @@
                 OnIndexLoad();
             });
 
+
+
+            //---------------------Code to test in browser------------------------------
             //var currentUrl = window.location.href;
 
             ////var route = { gotoboard: false };
@@ -563,13 +394,15 @@
             //localStorage["currentboardid"] = sbId;
             //console.log("currenboardid1", localStorage["currentboardid"]);
             
-            OnIndexLoad();
-
             //var clearLocalStorage = GetParameterValues('clearlocalstorage', currentUrl);
             //if (clearLocalStorage == "true") {
             //    localStorage.clear();
             //    console.log("remove");
             //}
+            //--------------------------------------------------------------------------
+
+            OnIndexLoad();
+
 
             try {
                 var projectsCount = 0;
@@ -583,20 +416,29 @@
 
                     self.RemoveBoard = function (b, e) {
 
-                        var boards = JSON.parse(localStorage["boards"]);
 
-                        var index = boards.indexOf(b.ProjectConfigId.toString());
+                        if (confirm("Are you sure you want to remove this board from your watch list?")) {
+                            var boards = JSON.parse(localStorage["boards"]);
 
-                        for (i = 0; i < boards.length; i++) {
-                            if (boards[i] == b.ProjectConfigId.toString()) {
-                                boards.splice(i, 1);
+                            var index = boards.indexOf(b.ProjectConfigId.toString());
+
+                            for (i = 0; i < boards.length; i++) {
+                                if (boards[i] == b.ProjectConfigId.toString()) {
+                                    boards.splice(i, 1);
+                                }
+
                             }
 
+                            localStorage["boards"] = JSON.stringify(boards);
+
+                            self.Boards.remove(b);
+
+                            if (self.Boards.length <= 0) {
+                                ShowNoBoards();
+                            }
                         }
 
-                        localStorage["boards"] = JSON.stringify(boards);
-
-                        self.Boards.remove(b);
+                        
                     };
 
                     self.PublishBoard = function (b) {
