@@ -377,14 +377,14 @@
     <!--End ShareBoard Partial-->
     <!-- BEGIN FOOTER -->
     <div class="footer">
-        <div class="footer-inner">
-            Today &copy; Sprintboards
+        <div class="footer-inner" data-bind="text: $data.TodaysYear">
+
         </div>
-        <div class="footer-tools">
+        <!--<div class="footer-tools">
             <span class="go-top">
                 <i class="icon-angle-up"></i>
             </span>
-        </div>
+        </div>-->
     </div>
     <!-- END FOOTER -->
     <!-- BEGIN CORE PLUGINS -->
@@ -466,7 +466,8 @@
                 localStorage["boards"] = JSON.stringify(boards);
 
                 if (!sbId) {
-                    alert("url not formed correctly." + sbId);
+                    window.location = "index.html";
+                    //alert("url not formed correctly." + sbId);
                 }
    
                 $.ajax({

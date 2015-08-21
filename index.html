@@ -64,20 +64,16 @@
 
     </div>
 
-    
-
     <div class="page-container" style="padding-top: 60px !important;">
 
         <div class="page-content pt30" id="page-shell">
 
             <div class="welcomediv hide">
-                Preview page.
+                <h3>Welcome to Sprintboards!</h3>
 
-                Welcome to the Sprintboards App!
+                <h3>1. Your watch list</h3>
 
-                <h3>1. The index page</h3>
-
-                <p class="lead">The home for all of your pinned Sprintboards!</p>
+                <p class="lead">This is a list of all of the boards you have pinned.</p>
 
                 <p>
                     Here you can see all of the sprintboards you have pinned press on the boards to open it in the Sprintboards viewer.
@@ -87,8 +83,23 @@
                     Remove a board from your pinned list by pressing remove.
                 </p>
 
-                <a href="#" class="btn seenwelcome">Open</a>
+                <p>
+                    If a board is unshared then it will automatically disappear from your list.
+                </p>
 
+                <h3>2. Pinning Boards</h3>
+
+                <p class="lead">How to pin a board to your watch list.</p>
+
+                <p>
+                    Open a shared sprintboard with a link the creator shared with you.
+                </p>
+
+                <p>
+                    You can press the bar at the top to open in the sprintboards app. If you do not have the app press the bar and it will download and open the shared sprintboard.
+                </p>
+                               
+                <a href="#" class="btn seenwelcome">Open</a>
 
             </div>
 
@@ -98,7 +109,17 @@
 
 
                 <p class="lead">
-                    You have no boards added, here how to add one!
+                    You have no boards added!
+                </p>
+
+                <p class="lead">How to pin a board to your watch list.</p>
+
+                <p>
+                    Open a shared sprintboard with a link the creator shared with you.
+                </p>
+
+                <p>
+                    You can press the bar at the top to open in the sprintboards app. If you do not have the app press the bar and it will download and open the shared sprintboard.
                 </p>
 
 
@@ -383,17 +404,23 @@
             // initiate layout and plugins
             App.init();
 
+            var boardid = parseInt(localStorage.getItem("currentboardid"));
+
+            if (boardid != null && boardid > 0) {
+                $(".seenwelcome").html("Open Board");
+            }
+            else {
+                $(".seenwelcome").html("Show my watch list");
+            }
+
             $(".seenwelcome").on("click", function () {
                 localStorage.setItem("hasseenapp", true);
                 OnIndexLoad();
             });
 
-
-
             //---------------------Code to test in browser------------------------------
             //var currentUrl = window.location.href;
 
-            ////var route = { gotoboard: false };
             //var sbId = GetParameterValues('sbid', currentUrl);
             
             //localStorage["currentboardid"] = sbId;
