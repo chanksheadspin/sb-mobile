@@ -132,7 +132,7 @@
                         <h3 class="page-title">
                             <span data-bind="text: Name"></span>
 
-                            <span class="pull-right" style="font-size:22px">Today</span>
+                            <span class="pull-right" style="font-size:22px" data-bind="text: moment($data.LastChangeDate()).format('LL')"></span>
                         </h3>
                     </div>
                 </div>
@@ -468,15 +468,16 @@
                 if (!sbId) {
                     alert("url not formed correctly." + sbId);
                 }
-
-                console.log("localstorage", localStorage["boards"]);
-                            
+   
                 $.ajax({
                     url: "http://stage.sprintboards.com/share/getsharedsprintboard/" + sbId,
                     dataType: 'json',
                     async: false,
                     success: function (data) {
                         if (data.Ok) {
+
+                            console.log(data);
+
                             $('title').text('Sprintboards | ' + data.Board.Name);
 
                             viewModel = ko.mapping.fromJS(data.Board);
@@ -488,16 +489,15 @@
                             $("#page-itself").show();
                         }
                         else {
-                            spinnerRooski.stop();
-                            //console.log(data);
-                            alert(data.Msg);
+
+                            localStorage.removeItem("currentboardid");
+                            window.location = "index.html";
+                            //spinnerRooski.stop();
+                            
+                            //alert(data.Msg);
                         }
                     }
                 });
-
-                if (!viewModel.HasDiffs()) {
-                    $('#share-option').hide();
-                }
 
             }
             catch (err) {

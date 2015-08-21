@@ -107,7 +107,7 @@
             <div class="boardlist hide">
 
                 <h3 class="page-title">
-                    Portfolio <small data-bind="text: $data.TodaysDate"></small>
+                    Watch List <small data-bind="text: $data.TodaysDate"></small>
                 </h3>
 
                 <div class="row-fluid">
@@ -340,11 +340,11 @@
         <div class="footer-inner" data-bind="text: $data.TodaysYear">
 
         </div>
-        <div class="footer-tools">
+        <!--<div class="footer-tools">
             <span class="go-top">
                 <i class="icon-angle-up"></i>
             </span>
-        </div>
+        </div>-->
     </div>
     <!-- END FOOTER -->
     <!-- BEGIN CORE PLUGINS -->
@@ -421,7 +421,6 @@
 
                     self.RemoveBoard = function (b, e) {
 
-
                         if (confirm("Are you sure you want to remove this board from your watch list?")) {
                             var boards = JSON.parse(localStorage["boards"]);
 
@@ -431,21 +430,17 @@
                                 if (boards[i] == b.ProjectConfigId.toString()) {
                                     boards.splice(i, 1);
                                 }
-
                             }
 
                             localStorage["boards"] = JSON.stringify(boards);
 
                             self.Boards.remove(b);
 
-                            alert(self.Boards().length);
-
                             if (self.Boards().length < 1) {
                                 ShowNoBoards();
                             }
                         }
 
-                        
                     };
 
                     self.PublishBoard = function (b) {
@@ -534,7 +529,6 @@
                         return monthNames[monthIndex] + " " + day + ", " + year;
                     }, self);
 
-
                     self.TodaysYear = ko.computed(function () {
                         
                         var date = new Date();
@@ -591,6 +585,9 @@
                                 if (data.Ok) {
                                     //console.log("board" + data.Board);
                                     myModel.Boards.push(data.Board);
+
+                                    //console.log("here", var date = new Date(parseInt(jsonDate.substr(6)));)
+
 
                                 }
                                 else {
