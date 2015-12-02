@@ -132,7 +132,7 @@
                         <h3 class="page-title">
                             <span data-bind="text: Name"></span>
 
-                            <span class="pull-right" style="font-size:22px" data-bind="text: moment($data.LastChangeDate()).format('LL')"></span>
+                            <span class="pull-right" style="font-size:22px" data-bind="text: 'As of ' + moment($data.LastChangeDate()).format('MMMM DD, YYYY')"></span>
                         </h3>
                     </div>
                 </div>
