@@ -427,18 +427,18 @@
             });
 
             //---------------------Code to test in browser------------------------------
-            var currentUrl = window.location.href;
+            //var currentUrl = window.location.href;
 
-            var sbId = GetParameterValues('sbid', currentUrl);
+            //var sbId = GetParameterValues('sbid', currentUrl);
             
-            localStorage["currentboardid"] = sbId;
-            console.log("currenboardid1", localStorage["currentboardid"]);
+            //localStorage["currentboardid"] = sbId;
+            //console.log("currenboardid1", localStorage["currentboardid"]);
             
-            var clearLocalStorage = GetParameterValues('clearlocalstorage', currentUrl);
-            if (clearLocalStorage == "true") {
-                localStorage.clear();
-                console.log("remove");
-            }
+            //var clearLocalStorage = GetParameterValues('clearlocalstorage', currentUrl);
+            //if (clearLocalStorage == "true") {
+            //    localStorage.clear();
+            //    console.log("remove");
+            //}
             //--------------------------------------------------------------------------
 
             OnIndexLoad();
