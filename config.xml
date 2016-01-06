@@ -1,5 +1,5 @@
 <widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" 
-        id="com.sprintboards.app" version="1.4.0">
+        id="com.sprintboards.app" version="1.5.0">
   <name>Sprintboards Mobile</name>
   <description>Sprintboards Mobile</description>
   <author href="http://sprintboards.com" email="hello@sprintboards.com">Sprintboards Team</author>
